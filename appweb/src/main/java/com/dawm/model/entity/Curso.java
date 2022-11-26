@@ -11,17 +11,17 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "PROFESOR_ASIGNATURA")
-public class ProfesorAsignatura {
+@Table(name = "CURSO")
+public class Curso {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "ID_PROFESOR")
-    private Long idProfesor;
+    @Column(name = "CODIGO", nullable = false, unique = true)
+    private String codigo;
 
-    @Column(name = "ID_ASIGNATURA")
-    private Long idAsignatura;
+    @Column(name = "NOMBRE")
+    private String nombre;
 
 }

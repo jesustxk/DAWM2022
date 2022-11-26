@@ -11,15 +11,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "PROFESOR_ASIGNATURA")
-public class ProfesorAsignatura {
+@Table(name = "CURSO_ASIGNATURA")
+public class CursoAsignatura {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "ID_PROFESOR")
-    private Long idProfesor;
+    @Column(name = "ID_CURSO")
+    private Long idCurso;
 
     @Column(name = "ID_ASIGNATURA")
     private Long idAsignatura;

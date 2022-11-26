@@ -19,9 +19,9 @@ public class AlumnoAsignatura {
     private Long id;
 
     @Column(name = "ID_ALUMNO")
-    private String idAlumno;
+    private Long idAlumno;
 
     @Column(name = "ID_ASIGNATURA")
-    private String idAsignatura;
+    private Long idAsignatura;
 
 }
