@@ -18,6 +18,9 @@ public class Asignatura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "CODIGO", nullable = false, unique = true)
+    private String codigo;
+
     @Column(name = "NOMBRE")
     private String nombre;
     

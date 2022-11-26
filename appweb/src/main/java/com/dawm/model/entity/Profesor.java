@@ -18,6 +18,9 @@ public class Profesor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "DNI", nullable = false, unique = true)
+    private String dni;
+
     @Column(name = "NOMBRE")
     private String nombre;
 

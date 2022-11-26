@@ -7,6 +7,8 @@ public class AsignaturaDTO {
     
     private Long id;
 
+    private String codigo;
+
     private String nombre;
 
 }

@@ -7,6 +7,8 @@ public class AlumnoDTO {
     
     private Long id;
 
+    private String dni;
+
     private String nombre;
 
     private Integer edad;
