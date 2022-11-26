@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dawm.model.dto.AlumnoAsignaturaDTO;
-import com.dawm.model.entity.AlumnoAsignatura;
 import com.dawm.model.mapper.AlumnoAsignaturaMapper;
 import com.dawm.repository.AlumnoAsignaturaRepository;
 import com.dawm.service.AlumnoAsignaturaService;
@@ -19,8 +18,9 @@ public class AlumnoAsignaturaServiceImpl implements AlumnoAsignaturaService {
     private AlumnoAsignaturaMapper alumnoAsignaturaMapper;
     
     @Override
-    public AlumnoAsignatura insertAlumnoAsignatura(AlumnoAsignaturaDTO alumnoAsignaturaDTO) {
-        return this.alumnoAsignaturaRepository.save(alumnoAsignaturaMapper.alumnoAsignaturaDTOToAlumnoAsignatura(alumnoAsignaturaDTO));
+    public Long insertAlumnoAsignatura(AlumnoAsignaturaDTO alumnoAsignaturaDTO) {
+        return this.alumnoAsignaturaRepository.save(
+            alumnoAsignaturaMapper.alumnoAsignaturaDTOToAlumnoAsignatura(alumnoAsignaturaDTO)).getId();
     }
     
 }

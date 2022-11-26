@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dawm.model.dto.CursoAsignaturaDTO;
-import com.dawm.model.entity.CursoAsignatura;
 import com.dawm.model.mapper.CursoAsignaturaMapper;
 import com.dawm.repository.CursoAsignaturaRepository;
 import com.dawm.service.CursoAsignaturaService;
@@ -19,8 +18,9 @@ public class CursoAsignaturaServiceImpl implements CursoAsignaturaService {
     private CursoAsignaturaMapper cursoAsignaturaMapper;
     
     @Override
-    public CursoAsignatura insertCursoAsignatura(CursoAsignaturaDTO cursoAsignaturaDTO) {
-        return this.cursoAsignaturaRepository.save(this.cursoAsignaturaMapper.cursoAsignaturaDTOToCursoAsignatura(cursoAsignaturaDTO));
+    public Long insertCursoAsignatura(CursoAsignaturaDTO cursoAsignaturaDTO) {
+        return this.cursoAsignaturaRepository.save(
+            this.cursoAsignaturaMapper.cursoAsignaturaDTOToCursoAsignatura(cursoAsignaturaDTO)).getId();
     }
 
 }
