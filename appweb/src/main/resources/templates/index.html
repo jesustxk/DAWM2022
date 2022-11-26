@@ -5,30 +5,20 @@
 		<title th:text="#{app.nombre} + ' - ' + #{header.inicio}"></title>
 		
 		<!-- ESTILOS CSS -->
-		<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet" />
-		<link type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-		
 		<link type="text/css" th:href="@{/public/css/bootstrap/bootstrap.min.css}" rel="stylesheet" />
 		<link type="text/css" th:href="@{/public/css/generico.css}" rel="stylesheet"/>
 		
 		<!-- SCRIPTS JS -->
 		
-		<script type="text/javascript" th:src="@{/public/js/jquery-3.6.0.min.js}"></script>
-		<script type="text/javascript" th:src="@{/public/js/bootstrap/bootstrap.min.js}"></script>
-		
-		<script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
-		
-		<script type="text/javascript" th:src="@{/public/js/tablas.js}"></script>
-		<script type="text/javascript" th:src="@{/public/js/menu.js}"></script>
 		
 	</head>
 	<body>
 		<!-- CABECERA Y MENÚ CON BOTONES -->
-		<h1>ESTO ES UNA PRUEBA</h1>
+		<header th:insert="generico/header.html :: header"> </header>
 
         Vaya web mas buona va a salir
-		
-		<script type="text/javascript" th:src="@{/public/js/chart.min.js}"></script>
+
+		<!-- PIE DE PÁGINA -->
+		<footer th:insert="generico/footer.html :: footer"> </footer>
 	</body>
 </html>
