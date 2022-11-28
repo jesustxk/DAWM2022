@@ -8,8 +8,8 @@ import com.dawm.model.entity.CursoAsignatura;
 @Mapper(componentModel = "spring")
 public interface CursoAsignaturaMapper {
     
-    CursoAsignaturaDTO cursoAsignaturaToCursoAsignaturaDTO(CursoAsignatura cursoAsignatura);
+    CursoAsignatura asCursoAsignatura(CursoAsignaturaDTO cursoAsignaturaDTO);
 
-    CursoAsignatura cursoAsignaturaDTOToCursoAsignatura(CursoAsignaturaDTO cursoAsignaturaDTO);
-    
+    CursoAsignaturaDTO asCursoAsignaturaDTO(CursoAsignatura cursoAsignatura);
+
 }

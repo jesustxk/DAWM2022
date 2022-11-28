@@ -20,7 +20,7 @@ public class CursoServiceImpl implements CursoService {
     @Override
     public String insertCurso(CursoDTO cursoDTO) {
         return this.cursoRepository.save(
-            this.cursoMapper.cursoDTOToCurso(cursoDTO)).getCodigo();
+            this.cursoMapper.asCurso(cursoDTO)).getCodigo();
     }
 
 }

@@ -20,7 +20,7 @@ public class CursoAsignaturaServiceImpl implements CursoAsignaturaService {
     @Override
     public Long insertCursoAsignatura(CursoAsignaturaDTO cursoAsignaturaDTO) {
         return this.cursoAsignaturaRepository.save(
-            this.cursoAsignaturaMapper.cursoAsignaturaDTOToCursoAsignatura(cursoAsignaturaDTO)).getId();
+            this.cursoAsignaturaMapper.asCursoAsignatura(cursoAsignaturaDTO)).getId();
     }
 
 }

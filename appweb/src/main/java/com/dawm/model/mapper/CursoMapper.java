@@ -7,9 +7,9 @@ import com.dawm.model.entity.Curso;
 
 @Mapper(componentModel = "spring")
 public interface CursoMapper {
-    
-    CursoDTO cursoToCursoDTO(Curso curso);
 
-    Curso cursoDTOToCurso(CursoDTO cursoDTO);
+    Curso asCurso(CursoDTO cursoDTO);
+    
+    CursoDTO asCursoDTO(Curso curso);
 
 }

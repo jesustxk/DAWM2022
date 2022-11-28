@@ -20,7 +20,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     @Override
     public String insertAlumno(AlumnoDTO alumnoDTO) {
         return this.alumnoRepository.save(
-            this.alumnoMapper.alumnoDTOToAlumno(alumnoDTO)).getDni();
+            this.alumnoMapper.asAlumno(alumnoDTO)).getDni();
     }
 
 }
