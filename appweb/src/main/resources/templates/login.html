@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th = "http://www.thymeleaf.org" lang = "es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,7 @@
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="style.css" />
+    <link type="text/css" th:href="@{/public/css/style.css}" rel="stylesheet"/>
     <title>STUDASH</title>
   </head>
   <body>
@@ -76,6 +76,6 @@
       </div>
     </div>
 
-    <script src="app.js"></script>
+    <script type="text/javascript" th:src="@{/public/js/app.js}"></script>
   </body>
 </html>
