@@ -20,7 +20,7 @@ public class ProfesorAsignaturaServiceImpl implements ProfesorAsignaturaService 
     @Override
     public Long insertProfesorAsignatura(ProfesorAsignaturaDTO profesorAsignaturaDTO) {
         return this.profesorAsignaturaRepository.save(
-            this.profesorAsignaturaMapper.profesorAsignaturaDTOToProfesorAsignatura(profesorAsignaturaDTO)).getId();
+            this.profesorAsignaturaMapper.asProfesorAsignatura(profesorAsignaturaDTO)).getId();
     }
 
 }

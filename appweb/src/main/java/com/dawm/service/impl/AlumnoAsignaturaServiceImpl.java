@@ -20,7 +20,7 @@ public class AlumnoAsignaturaServiceImpl implements AlumnoAsignaturaService {
     @Override
     public Long insertAlumnoAsignatura(AlumnoAsignaturaDTO alumnoAsignaturaDTO) {
         return this.alumnoAsignaturaRepository.save(
-            alumnoAsignaturaMapper.alumnoAsignaturaDTOToAlumnoAsignatura(alumnoAsignaturaDTO)).getId();
+            alumnoAsignaturaMapper.asAlumnoAsignatura(alumnoAsignaturaDTO)).getId();
     }
     
 }

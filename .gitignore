@@ -119,5 +119,9 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+### VS Code ###
+.vscode/
+
+
 # End of https://www.toptal.com/developers/gitignore/api/java,eclipse,windows
 .vscode/*

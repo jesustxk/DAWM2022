@@ -7,9 +7,9 @@ import com.dawm.model.entity.Alumno;
 
 @Mapper(componentModel = "spring")
 public interface AlumnoMapper {
-    
-    AlumnoDTO alumnoToAlumnoDTO(Alumno alumno);
 
-    Alumno alumnoDTOToAlumno(AlumnoDTO alumnoDTO);
+    Alumno asAlumno(AlumnoDTO alumnoDTO);
+    
+    AlumnoDTO asAlumnoDTO(Alumno alumno);
 
 }

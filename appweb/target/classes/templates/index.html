@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org" lang = "es">
+	<head>
+		<meta charset="UTF-8">
+		<title th:text="#{app.nombre} + ' - ' + #{header.inicio}"></title>
+		
+		<!-- ESTILOS CSS -->
+		<link type="text/css" th:href="@{/public/css/bootstrap/bootstrap.min.css}" rel="stylesheet" />
+		<link type="text/css" th:href="@{/public/css/generico.css}" rel="stylesheet"/>
+		
+		<!-- SCRIPTS JS -->
+		
+		
+	</head>
+	<body>
+		<!-- CABECERA Y MENÚ CON BOTONES -->
+		<header th:insert="generico/header.html :: header"> </header>
+
+        Vaya web mas buona va a salir
+
+		<!-- PIE DE PÁGINA -->
+		<footer th:insert="generico/footer.html :: footer"> </footer>
+	</body>
+</html>

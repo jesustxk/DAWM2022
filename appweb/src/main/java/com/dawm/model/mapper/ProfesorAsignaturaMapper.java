@@ -8,8 +8,8 @@ import com.dawm.model.entity.ProfesorAsignatura;
 @Mapper(componentModel = "spring")
 public interface ProfesorAsignaturaMapper {
 
-    ProfesorAsignaturaDTO profesorAsignaturaToProfesorAsignaturaDTO(ProfesorAsignatura profesorAsignatura);
+    ProfesorAsignatura asProfesorAsignatura(ProfesorAsignaturaDTO profesorAsignaturaDTO);
 
-    ProfesorAsignatura profesorAsignaturaDTOToProfesorAsignatura(ProfesorAsignaturaDTO profesorAsignaturaDTO);
+    ProfesorAsignaturaDTO asProfesorAsignaturaDTO(ProfesorAsignatura profesorAsignatura);
     
 }

@@ -20,7 +20,7 @@ public class ProfesorServiceImpl implements ProfesorService {
     @Override
     public String insertProfesor(ProfesorDTO profesorDTO) {
         return this.profesorRepository.save(
-            this.profesorMapper.profesorDTOToProfesor(profesorDTO)).getDni();
+            this.profesorMapper.asProfesor(profesorDTO)).getDni();
     }
 
 }
