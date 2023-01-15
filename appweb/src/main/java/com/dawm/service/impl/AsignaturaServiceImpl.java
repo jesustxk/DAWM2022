@@ -20,7 +20,7 @@ public class AsignaturaServiceImpl implements AsignaturaService {
     @Override
     public String insertAsignatura(AsignaturaDTO asignaturaDTO) {
         return this.asignaturaRepository.save(
-            this.asignaturaMapper.asignaturaDTOToAsignatura(asignaturaDTO)).getCodigo();
+            this.asignaturaMapper.asAsignatura(asignaturaDTO)).getCodigo();
     }
 
 }

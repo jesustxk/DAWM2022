@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>STUDASH</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form action="dashboard.html" class="sign-in-form">
+            <h2 class="title">Iniciar sesión</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Nombre de usuario" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Contraseña" />
+            </div>
+            <a href="dashboard.html"><input type="submit" value="Iniciar sesión" class="btn solid" /></a>
+
+            
+          </form>
+          <form action="#" class="sign-up-form">
+            <h2 class="title">Registrarse</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Nombre de usuario" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Correo electrónico" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Contraseña" />
+            </div>
+            
+            <a href=""><input type="submit" class="btn" value="Registrarse" /></a>
+
+          
+          </form>
+        </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>Bienvenido a STUDASH!</h3>
+            <p>
+              Bienvenido a la plataforma STUDASH! No dispone de una cuenta? dale al siguiente botón y regístrese!
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Registrarse
+            </button>
+          </div>
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>Bienvenido a STUDASH!</h3>
+            <p>
+              Bienvenido a la plataforma STUDASH! Ya tiene cuenta? dale al siguiente botón e inicie sesión!
+            </p>
+            <button class="btn transparent" id="sign-in-btn">
+              Iniciar sesión
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
