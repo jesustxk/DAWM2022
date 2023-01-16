@@ -15,13 +15,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "ALUMNO")
+@Table(schema = "MATRICULA", name = "ALUMNO")
 public class Alumno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
     @Column(name = "DNI", nullable = false, unique = true)
     private String dni;
 

@@ -14,12 +14,10 @@ public class AppWebControllerImpl implements AppWebController {
 
     public static final String LOGIN = "login";
     
+    @Override
     @GetMapping(path = {"/login"})
     public ModelAndView principal(Model model, HttpSession session) {
-    	
-    	ModelAndView modelAndView = new ModelAndView(LOGIN);
-    	
-        return modelAndView;
+    	return new ModelAndView(LOGIN);
     }
 
 }

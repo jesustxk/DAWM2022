@@ -1,0 +1,3 @@
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED) VALUES ('usuario', '$2a$12$76W6G/T4HwVxAZGqOr/BM.6qlNamMrH0t5nRIk7U3DgS5zkJYLaSS', 'true');
+
+INSERT INTO AUTHORITIES (username, authority) VALUES ('usuario', 'read');

@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "PROFESOR_ASIGNATURA")
+@Table(schema = "MATRICULA", name = "PROFESOR_ASIGNATURA")
 public class ProfesorAsignatura {
     
     @Id
