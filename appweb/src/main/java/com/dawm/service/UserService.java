@@ -1,9 +1,7 @@
 package com.dawm.service;
 
-import com.dawm.model.UserData;
-
 public interface UserService {
     
-    public void addUser(UserData userData);
+    public void addUser(String username, String password);
     
 }

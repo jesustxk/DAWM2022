@@ -28,22 +28,22 @@
             
           </form>
 
-          <form action="#" class="sign-up-form">
+          <form action="#" th:action="@{/addUser}" th:object="${userData}" method='POST' class="sign-up-form">
             <h2 class="title">Registrarse</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Nombre de usuario" />
+              <input type="text" placeholder="Nombre de usuario" th:field="*{username}" />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Correo electrónico" />
+              <input type="email" placeholder="Correo electrónico" th:field="*{email}" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Contraseña" />
+              <input type="password" placeholder="Contraseña" th:field="*{password}" />
             </div>
             
-            <a href=""><input type="submit" class="btn" value="Registrarse" /></a>
+            <input type="submit" class="btn" value="Registrarse" /></a>
           
           </form>
         </div>

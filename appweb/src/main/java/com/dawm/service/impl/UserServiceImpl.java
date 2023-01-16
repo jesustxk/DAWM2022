@@ -6,7 +6,6 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.stereotype.Service;
 
 import com.dawm.model.User;
-import com.dawm.model.UserData;
 import com.dawm.service.UserService;
 
 @Service
@@ -19,11 +18,11 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public void addUser(UserData userData) {
+    public void addUser(String username, String password) {
         User user = new User();
 
-        user.setUsername(userData.getUsername());
-        user.setPassword(passwordEncoder.encode(userData.getPassword()));
+        user.setUsername(username);
+        user.setPassword(passwordEncoder.encode(password));
         user.setEnabled(true);
 
         this.jdbcUserDetailsManager.createUser(user);
