@@ -16,9 +16,14 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/login*").permitAll().and()
-        	.authorizeRequests().antMatchers("/h2-console/**").hasRole("ADMIN")
+        http.authorizeRequests().antMatchers("/login*").permitAll()
+            .antMatchers("/h2-console/**").hasRole("ADMIN")
+            .antMatchers("/public/**").permitAll()
         	.anyRequest().authenticated()
+            .and()
+            .formLogin().loginPage("/login")
+            .defaultSuccessUrl("/index")
+            .permitAll()
         	
         	.and().httpBasic().disable()
             .csrf().disable()

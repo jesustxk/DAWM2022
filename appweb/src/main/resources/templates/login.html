@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link type="text/css" th:href="@{/public/css/style.css}" rel="stylesheet"/>
     <title>STUDASH</title>
   </head>
@@ -14,20 +11,23 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="dashboard.html" class="sign-in-form">
+          <form name='f' action="login" method='POST' class="sign-in-form">
             <h2 class="title">Iniciar sesión</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Nombre de usuario" />
+              <input type="text" name='username' placeholder="Nombre de usuario" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Contraseña" />
+              <input type="password" name='password' placeholder="Contraseña" />
             </div>
-            <a href="dashboard.html"><input type="submit" value="Iniciar sesión" class="btn solid" /></a>
 
+            <div class="form-actions">
+              <input name="submit" type="submit" value="Iniciar sesión" class="btn solid" />
+            </div>
             
           </form>
+
           <form action="#" class="sign-up-form">
             <h2 class="title">Registrarse</h2>
             <div class="input-field">
@@ -44,7 +44,6 @@
             </div>
             
             <a href=""><input type="submit" class="btn" value="Registrarse" /></a>
-
           
           </form>
         </div>
