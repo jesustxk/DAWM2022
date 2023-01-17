@@ -21,12 +21,14 @@ public class AppWebControllerImpl implements AppWebController {
 
     public static final String REDIRECT_LOGIN = "redirect:/login";
 
+    public static final String DASHBOARD = "dashboard";
+
     @Autowired
     private UserService userService;
     
     @Override
     @GetMapping(path = {"/login"})
-    public ModelAndView principal(Model model, HttpSession session) {
+    public ModelAndView login(Model model, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView(LOGIN);
 
         modelAndView.addObject("userData", new UserData());
@@ -34,6 +36,7 @@ public class AppWebControllerImpl implements AppWebController {
     	return modelAndView;
     }
 
+    @Override
     @PostMapping(path = {"/addUser"})
     public ModelAndView addUser(@ModelAttribute("userData") UserData userData, Model model, HttpSession session){
 
@@ -46,6 +49,12 @@ public class AppWebControllerImpl implements AppWebController {
         }
 
         return modelAndView;
+    }
+
+    @Override
+    @GetMapping(path = {"/dashboard"})
+    public ModelAndView dashboard(Model model, HttpSession session) {
+        return new ModelAndView(DASHBOARD);
     }
 
 }
