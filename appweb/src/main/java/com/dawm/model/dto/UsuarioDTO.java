@@ -5,10 +5,14 @@ import java.sql.Date;
 import lombok.Data;
 
 @Data
-public class AlumnoDTO {
+public class UsuarioDTO {
     
-    private Long id;
+    private String username;
 
+    private String password;
+
+    private Boolean enabled;
+    
     private String dni;
 
     private String nombre;
@@ -16,5 +20,5 @@ public class AlumnoDTO {
     private Integer edad;
 
     private Date fechaAlta;
-    
+
 }

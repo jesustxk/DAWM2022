@@ -26,21 +26,20 @@ public class SecurityConfig {
 
             .and()
             .formLogin().loginPage("/login")
-            .defaultSuccessUrl("/index")
+            .defaultSuccessUrl("/dashboard", true)
+            .failureUrl("/login")
             .permitAll()
         	
         	.and().httpBasic().disable()
             .csrf().disable()
             .headers().frameOptions().disable();
-        
-        http.formLogin().defaultSuccessUrl("/", true);
 
         return http.build();
     }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(12);
     }
 
     @Bean

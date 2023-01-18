@@ -1,31 +1,34 @@
 package com.dawm.service.impl;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.stereotype.Service;
 
-import com.dawm.model.User;
+import com.dawm.model.dto.UsuarioDTO;
+import com.dawm.model.mapper.UsuarioMapper;
+import com.dawm.repository.UsuarioRepository;
 import com.dawm.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
     
     @Autowired
-    private JdbcUserDetailsManager jdbcUserDetailsManager;
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private UsuarioMapper usuarioMapper;
 
     @Override
     public void addUser(String username, String password) {
-        User user = new User();
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
 
-        user.setUsername(username);
-        user.setPassword(passwordEncoder.encode(password));
-        user.setEnabled(true);
+        usuarioDTO.setUsername(username);
+        usuarioDTO.setPassword(password);
+        usuarioDTO.setEnabled(true);
+        usuarioDTO.setFechaAlta(new Date(System.currentTimeMillis()));
 
-        this.jdbcUserDetailsManager.createUser(user);
+        this.usuarioRepository.save(usuarioMapper.asUsuario(usuarioDTO));
     }
 
 }

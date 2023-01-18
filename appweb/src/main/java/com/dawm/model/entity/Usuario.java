@@ -4,8 +4,6 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,18 +13,27 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(schema = "MATRICULA", name = "ASIGNATURA")
-public class Asignatura {
+@Table(name = "USERS")
+public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "USERNAME", nullable = false, unique = true)
+    private String username;
 
-    @Column(name = "CODIGO", nullable = false, unique = true)
-    private String codigo;
+    @Column(name = "PASSWORD", nullable = false)
+    private String password;
+
+    @Column(name = "ENABLED")
+    private Boolean enabled;
+    
+    @Column(name = "EMAIL")
+    private String email;
 
     @Column(name = "NOMBRE")
     private String nombre;
+
+    @Column(name = "EDAD")
+    private Integer edad;
 
     @Column(name = "FECHA_ALTA", nullable = false)
 	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss.S")
