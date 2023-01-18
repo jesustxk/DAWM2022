@@ -10,10 +10,10 @@ import com.dawm.model.UserData;
 
 public interface AppWebController {
     
-    public ModelAndView login(Model model, HttpSession session);
+    public ModelAndView getLogin(Model model, HttpSession session);
 
     public ModelAndView addUser(@ModelAttribute UserData userData, Model model, HttpSession session);
 
-    public ModelAndView dashboard(Model model, HttpSession session);
+    public ModelAndView getDashboard(Model model, HttpSession session);
     
 }

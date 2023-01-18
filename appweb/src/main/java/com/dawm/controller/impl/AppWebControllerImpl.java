@@ -3,6 +3,7 @@ package com.dawm.controller.impl;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dawm.controller.AppWebController;
 import com.dawm.model.UserData;
+import com.dawm.service.AuthoritiesService;
 import com.dawm.service.UserService;
 
 @Controller
@@ -24,11 +26,17 @@ public class AppWebControllerImpl implements AppWebController {
     public static final String DASHBOARD = "dashboard";
 
     @Autowired
+    private AuthoritiesService authoritiesService;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
     private UserService userService;
     
     @Override
     @GetMapping(path = {"/login"})
-    public ModelAndView login(Model model, HttpSession session) {
+    public ModelAndView getLogin(Model model, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView(LOGIN);
 
         modelAndView.addObject("userData", new UserData());
@@ -43,7 +51,8 @@ public class AppWebControllerImpl implements AppWebController {
         ModelAndView modelAndView = new ModelAndView(REDIRECT_LOGIN);
 
         try {
-            this.userService.addUser(userData.getUsername(), userData.getPassword());
+            this.userService.addUser(userData.getUsername(), passwordEncoder.encode(userData.getPassword()));
+            this.authoritiesService.addAuthority(userData.getUsername());
         } catch (Exception e) {
             return new ModelAndView(REDIRECT_LOGIN);
         }
@@ -53,7 +62,7 @@ public class AppWebControllerImpl implements AppWebController {
 
     @Override
     @GetMapping(path = {"/dashboard"})
-    public ModelAndView dashboard(Model model, HttpSession session) {
+    public ModelAndView getDashboard(Model model, HttpSession session) {
         return new ModelAndView(DASHBOARD);
     }
 

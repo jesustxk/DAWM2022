@@ -3,7 +3,6 @@ package com.dawm.service.impl;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.dawm.model.dto.UsuarioDTO;
@@ -13,9 +12,6 @@ import com.dawm.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
-
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
     
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -28,7 +24,7 @@ public class UserServiceImpl implements UserService {
         UsuarioDTO usuarioDTO = new UsuarioDTO();
 
         usuarioDTO.setUsername(username);
-        usuarioDTO.setPassword(passwordEncoder.encode(password));
+        usuarioDTO.setPassword(password);
         usuarioDTO.setEnabled(true);
         usuarioDTO.setFechaAlta(new Date(System.currentTimeMillis()));
 
