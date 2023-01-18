@@ -3,9 +3,9 @@ package com.dawm.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.dawm.model.entity.Alumno;
+import com.dawm.model.entity.Usuario;
 
 @Repository
-public interface AlumnoRepository extends JpaRepository<Alumno, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     
 }
