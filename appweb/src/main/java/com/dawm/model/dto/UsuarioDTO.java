@@ -13,7 +13,7 @@ public class UsuarioDTO {
 
     private Boolean enabled;
     
-    private String dni;
+    private String email;
 
     private String nombre;
 
