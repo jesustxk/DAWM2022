@@ -7,5 +7,5 @@ import com.dawm.model.entity.Curso;
 
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Long> {
-    
+
 }

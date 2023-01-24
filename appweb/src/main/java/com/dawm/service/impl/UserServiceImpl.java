@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
         usuarioDTO.setFechaAlta(new Date(System.currentTimeMillis()));
 
         this.usuarioRepository.save(usuarioMapper.asUsuario(usuarioDTO));
+        
     }
 
 }
