@@ -5,7 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
-public interface CursosController {
+public interface CursoController {
 
     public ModelAndView getCursos(Model model, HttpSession session);
     

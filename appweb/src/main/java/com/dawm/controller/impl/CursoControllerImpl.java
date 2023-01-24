@@ -7,10 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dawm.controller.CursosController;
+import com.dawm.controller.CursoController;
 
 @Controller
-public class CursosControllerImpl implements CursosController {
+public class CursoControllerImpl implements CursoController {
 
     public static final String CURSOS = "cursos";
     
