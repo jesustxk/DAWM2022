@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dawm.model.UserData;
+import com.dawm.model.util.UserData;
 
 public interface AppWebController {
     

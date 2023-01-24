@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dawm.controller.AppWebController;
-import com.dawm.model.UserData;
+import com.dawm.model.util.UserData;
 import com.dawm.service.AuthoritiesService;
 import com.dawm.service.UserService;
 

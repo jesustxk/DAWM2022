@@ -1,12 +1,14 @@
-package com.dawm.model.dto;
+package com.dawm.model.util;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dawm.model.dto.CursoDTO;
+
 import lombok.Data;
 
 @Data
-public class ListaCursoDTO {
+public class ListaCurso {
     
     private List<CursoDTO> cursos = new ArrayList<>();
 

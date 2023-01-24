@@ -87,9 +87,9 @@
         </div>
       </div>
       
-      <div th:each="cursos : ${tablaCursos}">
-        <div class="users" th:each="curso : ${cursos.cursos}" >
-          <div class="card">
+      <div>
+        <div class="users" th:each="cursos : ${tablaCursos}">
+          <div class="card" th:each="curso : ${cursos.cursos}">
             <div class="icons-card">
               <i class="fa fa-pen-to-square fa-lg"></i>
               <i class="fa fa-trash-can fa-lg"></i>
@@ -103,7 +103,7 @@
                   <td>Personas inscritas</td>
                 </tr>
                 <tr>
-                  <td><span>100</span></td>
+                  <td><span th:text="${curso.personasInscritas}"></span></td>
                 </tr>
               </table>
             </div>

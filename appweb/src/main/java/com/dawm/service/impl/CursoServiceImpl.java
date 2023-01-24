@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dawm.model.dto.CursoDTO;
-import com.dawm.model.dto.ListaCursoDTO;
 import com.dawm.model.mapper.CursoMapper;
+import com.dawm.model.util.ListaCurso;
 import com.dawm.repository.CursoRepository;
 import com.dawm.service.CursoService;
 
@@ -28,10 +28,10 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public List<ListaCursoDTO> getListaCursosDTO() {
+    public List<ListaCurso> getListaCursosDTO() {
 
-        List<ListaCursoDTO> tablaCursos = new ArrayList<>();
-        tablaCursos.add(new ListaCursoDTO());
+        List<ListaCurso> tablaCursos = new ArrayList<>();
+        tablaCursos.add(new ListaCurso());
 
         List<CursoDTO> cursos = this.cursoMapper.asCursoDTOList(this.cursoRepository.findAll());
 
@@ -42,7 +42,7 @@ public class CursoServiceImpl implements CursoService {
             if (cont2 == 4) {
     			cont2 = 0;
     			
-    			tablaCursos.add(new ListaCursoDTO());
+    			tablaCursos.add(new ListaCurso());
                 cont++;
     		}
     		

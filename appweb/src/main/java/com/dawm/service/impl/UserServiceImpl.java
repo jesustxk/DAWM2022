@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.dawm.model.UserData;
 import com.dawm.model.dto.UsuarioDTO;
 import com.dawm.model.mapper.UsuarioMapper;
+import com.dawm.model.util.UserData;
 import com.dawm.repository.UsuarioRepository;
 import com.dawm.service.UserService;
 

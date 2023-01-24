@@ -1,4 +1,4 @@
-package com.dawm.model;
+package com.dawm.model.util;
 
 import lombok.Data;
 

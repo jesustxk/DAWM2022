@@ -1,6 +1,6 @@
 package com.dawm.service;
 
-import com.dawm.model.UserData;
+import com.dawm.model.util.UserData;
 
 public interface UserService {
     
