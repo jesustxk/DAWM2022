@@ -1,0 +1,3 @@
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED, EMAIL, FECHA_ALTA) VALUES ('usuario', '$2a$12$76W6G/T4HwVxAZGqOr/BM.6qlNamMrH0t5nRIk7U3DgS5zkJYLaSS', 'true', 'usuario@gmail.com', CURRENT_TIMESTAMP);
+
+INSERT INTO AUTHORITIES (username, authority) VALUES ('usuario', 'read');
