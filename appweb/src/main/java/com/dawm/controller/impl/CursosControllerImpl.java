@@ -2,12 +2,14 @@ package com.dawm.controller.impl;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dawm.controller.CursosController;
 
+@Controller
 public class CursosControllerImpl implements CursosController {
 
     public static final String CURSOS = "cursos";
