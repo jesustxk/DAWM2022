@@ -25,8 +25,11 @@ public class Curso {
     @Column(name = "CODIGO", nullable = false, unique = true)
     private String codigo;
 
-    @Column(name = "NOMBRE")
-    private String nombre;
+    @Column(name = "TITULO")
+    private String titulo;
+
+    @Column(name = "DESCRIPCION")
+    private String descripcion;
 
     @Column(name = "FECHA_ALTA", nullable = false)
 	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss.S")

@@ -11,7 +11,9 @@ public class CursoDTO {
 
     private String codigo;
 
-    private String nombre;
+    private String titulo;
+
+    private String descripcion;
 
     private Date fechaAlta;
     
