@@ -22,8 +22,6 @@ public class AppWebControllerImpl implements AppWebController {
 
     public static final String REDIRECT_LOGIN = "redirect:/login";
 
-    public static final String DASHBOARD = "dashboard";
-
     @Autowired
     private AuthoritiesService authoritiesService;
 
@@ -54,12 +52,6 @@ public class AppWebControllerImpl implements AppWebController {
         }
 
         return modelAndView;
-    }
-
-    @Override
-    @GetMapping(path = {"/dashboard"})
-    public ModelAndView getDashboard(Model model, HttpSession session) {
-        return new ModelAndView(DASHBOARD);
     }
 
 }
