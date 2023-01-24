@@ -20,14 +20,14 @@ public class DashboardControllerImpl implements DashboardController {
     private CursoService cursoService;
 
     @Override
-    @GetMapping(path = {"/dashboard"})
+    @GetMapping(path = {"/", "/dashboard"})
     public ModelAndView getDashboard(Model model, HttpSession session) {
 
         ModelAndView modelAndView = new ModelAndView(DASHBOARD);
 
-        modelAndView.addObject("tablaCursos", this.cursoService.getTopCursos());
+        modelAndView.addObject("tablaCursos", this.cursoService.getAllCursos());
 
-        return new ModelAndView(DASHBOARD);
+        return modelAndView;
     }
     
 }

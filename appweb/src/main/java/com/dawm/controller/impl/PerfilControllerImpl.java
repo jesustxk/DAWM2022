@@ -26,7 +26,8 @@ public class PerfilControllerImpl implements PerfilController {
 
         ModelAndView modelAndView = new ModelAndView(PERFIL);
 
-        modelAndView.addObject("usuario", usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
+        modelAndView.addObject("usuario", 
+            usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
 
         return modelAndView;
     }
