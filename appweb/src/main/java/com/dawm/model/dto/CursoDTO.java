@@ -15,4 +15,5 @@ public class CursoDTO {
 
     private Date fechaAlta;
     
+    private UsuarioDTO usuario;
 }
