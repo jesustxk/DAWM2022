@@ -16,5 +16,9 @@ public class CursoDTO {
     private String descripcion;
 
     private Date fechaAlta;
+
+    private byte[] imagen;
+
+    private Integer personasInscritas;
     
 }

@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dawm.controller.AppWebController;
 import com.dawm.model.util.UserData;
 import com.dawm.service.AuthoritiesService;
-import com.dawm.service.UserService;
+import com.dawm.service.UsuarioService;
 
 @Controller
 public class AppWebControllerImpl implements AppWebController {
@@ -26,7 +26,7 @@ public class AppWebControllerImpl implements AppWebController {
     private AuthoritiesService authoritiesService;
 
     @Autowired
-    private UserService userService;
+    private UsuarioService userService;
     
     @Override
     @GetMapping(path = {"/login"})
@@ -45,7 +45,7 @@ public class AppWebControllerImpl implements AppWebController {
         ModelAndView modelAndView = new ModelAndView(REDIRECT_LOGIN);
 
         try {
-            this.userService.addUser(userData);
+            this.userService.addUsuario(userData);
             this.authoritiesService.addAuthority(userData.getUsername());
         } catch (Exception e) {
             return new ModelAndView(REDIRECT_LOGIN);

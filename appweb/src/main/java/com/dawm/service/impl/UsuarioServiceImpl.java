@@ -10,10 +10,10 @@ import com.dawm.model.dto.UsuarioDTO;
 import com.dawm.model.mapper.UsuarioMapper;
 import com.dawm.model.util.UserData;
 import com.dawm.repository.UsuarioRepository;
-import com.dawm.service.UserService;
+import com.dawm.service.UsuarioService;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UsuarioServiceImpl implements UsuarioService {
     
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     
 
     @Override
-    public void addUser(UserData userData) {
+    public void addUsuario(UserData userData) {
         UsuarioDTO usuarioDTO = new UsuarioDTO();
 
         usuarioDTO.setUsername(userData.getUsername());
@@ -37,6 +37,11 @@ public class UserServiceImpl implements UserService {
 
         this.usuarioRepository.save(usuarioMapper.asUsuario(usuarioDTO));
         
+    }
+
+    @Override
+    public UsuarioDTO getUsuario(String username) {
+        return this.usuarioMapper.asUsuarioDTO(this.usuarioRepository.findByUsername(username));
     }
 
 }

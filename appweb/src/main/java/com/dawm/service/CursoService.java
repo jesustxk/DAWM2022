@@ -9,6 +9,10 @@ public interface CursoService {
     
     public String insertCurso(CursoDTO cursoDTO);
 
-    public List<ListaCurso> getListaCursosDTO();
+    public List<ListaCurso> getAllCursos();
+
+    public List<ListaCurso> getMisCursos();
+
+    public List<ListaCurso> getTopCursos();
 
 }

@@ -28,7 +28,61 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public List<ListaCurso> getListaCursosDTO() {
+    public List<ListaCurso> getAllCursos() {
+
+        List<ListaCurso> tablaCursos = new ArrayList<>();
+        tablaCursos.add(new ListaCurso());
+
+        List<CursoDTO> cursos = this.cursoMapper.asCursoDTOList(this.cursoRepository.findAll());
+
+        int cont = 0;
+        int cont2 = 0;
+
+        for (CursoDTO curso : cursos) {
+            if (cont2 == 4) {
+    			cont2 = 0;
+    			
+    			tablaCursos.add(new ListaCurso());
+                cont++;
+    		}
+    		
+    		tablaCursos.get(cont).addCursoDTO(curso);
+    		
+    		cont2++;
+        }
+        
+        return tablaCursos;
+    }
+
+    @Override
+    public List<ListaCurso> getMisCursos() {
+
+        List<ListaCurso> tablaCursos = new ArrayList<>();
+        tablaCursos.add(new ListaCurso());
+
+        List<CursoDTO> cursos = this.cursoMapper.asCursoDTOList(this.cursoRepository.findAll());
+
+        int cont = 0;
+        int cont2 = 0;
+
+        for (CursoDTO curso : cursos) {
+            if (cont2 == 4) {
+    			cont2 = 0;
+    			
+    			tablaCursos.add(new ListaCurso());
+                cont++;
+    		}
+    		
+    		tablaCursos.get(cont).addCursoDTO(curso);
+    		
+    		cont2++;
+        }
+        
+        return tablaCursos;
+    }
+
+    @Override
+    public List<ListaCurso> getTopCursos() {
 
         List<ListaCurso> tablaCursos = new ArrayList<>();
         tablaCursos.add(new ListaCurso());

@@ -25,7 +25,7 @@ public class CursoControllerImpl implements CursoController {
         
         ModelAndView modelAndView = new ModelAndView(CURSOS);
 
-        modelAndView.addObject("tablaCursos", this.cursoService.getListaCursosDTO());
+        modelAndView.addObject("tablaCursos", this.cursoService.getAllCursos());
 
         return modelAndView;
     }

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -34,5 +35,9 @@ public class Curso {
     @Column(name = "FECHA_ALTA", nullable = false)
 	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss.S")
 	private Date fechaAlta;
+
+    @Lob
+    @Column(name = "IMAGEN")
+    private byte[] imagen;
 
 }
