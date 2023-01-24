@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org" lang = "es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link type="text/css" th:href="@{/public/css/style.css}" rel="stylesheet"/>
+    <link type="text/css" th:href="@{/public/css/styles.css}" rel="stylesheet"/>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    
+
+    <div class="logo-profile">
+        <img src="perfil.png" class="profile_image" alt="">
+            <h4>Sokaina Baouch</h4>
+            <h5>Administrador</h5>
+      </div>
+
+    <ul class="nav-list">
+      <li>
+        <a href="/dashboard">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+         <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+        <a href="/cursos">
+          <i class='bx bx-user'></i>
+          <span class="links_name">Cursos</span>
+        </a>
+         <span class="tooltip">Cursos</span>
+      </li>
+
+      <a class="nav-link" href="/monitor" th:text="#{header.monitorizacion}"></a>
+      
+      <li>
+       <a href="/usuarios">
+         <i class='bx bx-user-pin' ></i>
+         <span class="links_name">Usuarios</span>
+       </a>
+       <span class="tooltip">Usuarios</span>
+     </li>
+     <li>
+       <a href="/configuracion">
+         <i class='bx bx-cog' ></i>
+         <span class="links_name">Perfil</span>
+       </a>
+       <span class="tooltip">Perfil</span>
+     </li>
+     <li class="profile">
+        <a href="/login.html">
+            <i class='bx bx-log-out' ></i>
+            <span class="links_name">Cerrar sesión</span>
+          </a>
+     </li>
+    </ul>
+  </div>
+
+  <section class="home-section" id="usuarios">
+    <div class="text">Usuario</div>
+  </section>
+
+
+  
+  <script>
+
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();
+  });
+
+  searchBtn.addEventListener("click", ()=>{ 
+    sidebar.classList.toggle("open");
+    menuBtnChange(); 
+  });
+
+    function menuBtnChange() {
+    if(sidebar.classList.contains("open")){
+        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+    }else {
+        closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
+    }
+    }
+
+
+    const indicators = document.querySelectorAll('a');
+   
+    indicators.forEach((indicator) => {
+    indicator.addEventListener('click', function () {
+    });
+    });
+
+    const sections = document.querySelectorAll("section");
+
+    const onSectionLeavesViewport = (section) => {
+    const observer = new IntersectionObserver(
+        (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+            const element = entry.target;
+            const indicator = document.querySelector(`a[href='#${element.id}']`);
+            return;
+            }
+        
+        });
+        },
+        {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.75,
+        }
+    );
+    observer.observe(section);
+    };
+
+  </script>
+
+   <script type="text/javascript">
+        var main_btn = document.querySelector(".main_btn");
+        var wrapper = document.querySelector(".wrapper");
+        var close_btns = document.querySelectorAll(".close_btn");
+        
+        main_btn.addEventListener("click", function () {
+        wrapper.classList.add("active");
+        });
+        
+        close_btns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            wrapper.classList.remove("active");
+        });
+        });
+        
+
+    </script> 
+
+</body>
+</html>
