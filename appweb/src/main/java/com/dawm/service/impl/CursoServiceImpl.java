@@ -38,65 +38,31 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public List<ListaCurso> getAllCursos() {
-
-        List<ListaCurso> tablaCursos = new ArrayList<>();
-        tablaCursos.add(new ListaCurso());
-
-        List<CursoDTO> cursos = this.cursoMapper.asCursoDTOList(this.cursoRepository.findAll());
-
-        int cont = 0;
-        int cont2 = 0;
-
-        for (CursoDTO curso : cursos) {
-            if (cont2 == 4) {
-    			cont2 = 0;
-    			
-    			tablaCursos.add(new ListaCurso());
-                cont++;
-    		}
-    		
-    		tablaCursos.get(cont).addCursoDTO(curso);
-    		
-    		cont2++;
-        }
-        
-        return tablaCursos;
+        return this.prepararTablaCursos(
+            this.cursoMapper.asCursoDTOList(this.cursoRepository.findAll()));
     }
 
     @Override
     public List<ListaCurso> getCursosMatriculados(Long idUsuario) {
-
-        List<ListaCurso> tablaCursos = new ArrayList<>();
-        tablaCursos.add(new ListaCurso());
-
-        List<CursoDTO> cursos = this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosMatriculados(idUsuario));
-
-        int cont = 0;
-        int cont2 = 0;
-
-        for (CursoDTO curso : cursos) {
-            if (cont2 == 4) {
-    			cont2 = 0;
-    			
-    			tablaCursos.add(new ListaCurso());
-                cont++;
-    		}
-    		
-    		tablaCursos.get(cont).addCursoDTO(curso);
-    		
-    		cont2++;
-        }
-        
-        return tablaCursos;
+        return this.prepararTablaCursos(
+            this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosMatriculados(idUsuario)));
     }
 
     @Override
     public List<ListaCurso> getCursosPropietario(UsuarioDTO usuarioDTO) {
+        return this.prepararTablaCursos(
+            this.cursoMapper.asCursoDTOList(this.cursoRepository.findByUsuario(this.usuarioMapper.asUsuario(usuarioDTO))));
+    }
 
+    @Override
+    public List<ListaCurso> getTopCursos() {
+        return this.prepararTablaCursos(
+            this.cursoMapper.asCursoDTOList(this.cursoRepository.findAll()));
+    }
+
+    private List<ListaCurso> prepararTablaCursos(List<CursoDTO> cursos) {
         List<ListaCurso> tablaCursos = new ArrayList<>();
         tablaCursos.add(new ListaCurso());
-
-        List<CursoDTO> cursos = this.cursoMapper.asCursoDTOList(this.cursoRepository.findByUsuario(this.usuarioMapper.asUsuario(usuarioDTO)));
 
         int cont = 0;
         int cont2 = 0;
@@ -108,6 +74,9 @@ public class CursoServiceImpl implements CursoService {
     			tablaCursos.add(new ListaCurso());
                 cont++;
     		}
+
+            // Info extra por cada curso
+            this.setInfoExtraCurso(curso);
     		
     		tablaCursos.get(cont).addCursoDTO(curso);
     		
@@ -117,33 +86,10 @@ public class CursoServiceImpl implements CursoService {
         return tablaCursos;
     }
 
-    @Override
-    public List<ListaCurso> getTopCursos() {
+    private void setInfoExtraCurso(CursoDTO curso) {
+        curso.setValoracion(this.cursoUsuarioService.getValoracionByIdCurso(curso.getIdCurso()));
 
-        List<ListaCurso> tablaCursos = new ArrayList<>();
-        tablaCursos.add(new ListaCurso());
-
-        List<CursoDTO> cursos = this.cursoMapper.asCursoDTOList(this.cursoRepository.findAll());
-
-        int cont = 0;
-        int cont2 = 0;
-
-        for (CursoDTO curso : cursos) {
-            if (cont2 == 4) {
-    			cont2 = 0;
-    			
-    			tablaCursos.add(new ListaCurso());
-                cont++;
-    		}
-
-            curso.setValoracion(this.cursoUsuarioService.getValoracionByIdCurso(curso.getIdCurso()));
-    		
-    		tablaCursos.get(cont).addCursoDTO(curso);
-    		
-    		cont2++;
-        }
-        
-        return tablaCursos;
+        curso.setPersonasInscritas(this.cursoUsuarioService.countMatriculados(curso.getIdCurso()));
     }
 
 }

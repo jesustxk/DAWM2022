@@ -770,6 +770,29 @@ body {
   color: #c59b08;
 }
 
+.toprate {
+  float:left;
+  margin-left: 45px;
+  height: 46px;
+  padding: 0 10px;
+}
+.toprate:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+}
+.toprate:not(:checked) > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
+}
+.toprate:not(:checked) > label:before {
+  content: '★ ';
+}
+
 
 
 .drag-area{

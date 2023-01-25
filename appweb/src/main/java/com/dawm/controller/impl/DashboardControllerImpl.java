@@ -32,7 +32,7 @@ public class DashboardControllerImpl implements DashboardController {
 
         ModelAndView modelAndView = new ModelAndView(DASHBOARD);
 
-        modelAndView.addObject("tablaCursos", this.cursoService.getAllCursos());
+        modelAndView.addObject("tablaCursos", this.cursoService.getTopCursos());
 
         if (session.getAttribute(USUARIO) == null) {
 

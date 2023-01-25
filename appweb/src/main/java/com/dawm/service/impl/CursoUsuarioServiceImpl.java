@@ -16,4 +16,10 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
     public Integer getValoracionByIdCurso(Long idCurso) {
         return this.cursoUsuarioRepository.getValoracionByIdCurso(idCurso);
     }
+
+    @Override
+    public Integer countMatriculados(Long idCurso) {
+        return this.cursoUsuarioRepository.countMatriculados(idCurso);
+    }
+
 }

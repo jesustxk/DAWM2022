@@ -10,7 +10,10 @@ import com.dawm.model.entity.CursoUsuario;
 @Repository
 public interface CursoUsuarioRepository extends JpaRepository<CursoUsuario, Long> {
 
-    @Query(value = "SELECT SUM(c.VALORACION) AS VALORACION FROM CURSO c WHERE c.ID_CURSO = :idCurso", nativeQuery = true)
+    @Query(value = "SELECT COALESCE(AVG(cu.VALORACION), 0) AS VALORACION FROM CURSO_USUARIO cu WHERE cu.ID_CURSO = :idCurso", nativeQuery = true)
     Integer getValoracionByIdCurso(@Param("idCurso") Long idCurso);
+
+    @Query(value = "SELECT COALESCE(COUNT(cu.ID_CURSO_USUARIO), 0) AS VALORACION FROM CURSO_USUARIO cu WHERE cu.ID_CURSO = :idCurso", nativeQuery = true)
+    Integer countMatriculados(@Param("idCurso") Long idCurso);
 
 }

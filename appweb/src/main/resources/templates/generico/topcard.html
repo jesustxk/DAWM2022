@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org" lang = "es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link type="text/css" th:href="@{/public/css/style.css}" rel="stylesheet"/>
+    <link type="text/css" th:href="@{/public/css/styles.css}" rel="stylesheet"/>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+      
+    <topcard>
+        <div class="users" th:each="cursos : ${tablaCursos}">
+            <div class="card" th:each="curso : ${cursos.cursos}">
+                <div class="icons-card">
+                    <i class="fa fa-pen-to-square fa-lg"></i>
+                    <i class="fa fa-trash-can fa-lg"></i>
+                </div>
+                <img th:src="${curso.imagen}">
+                <h4 th:text="${curso.titulo}"></h4>
+                <p th:text="${curso.descripcion}"></p>
+                <div class="per">
+                    <table>
+                    <tr>
+                        <td>Personas inscritas</td>
+                    </tr>
+                    <tr>
+                        <td><span th:text="${curso.personasInscritas}"></span></td>
+                    </tr>
+                    </table>
+                </div>
+                <div class="toprate" >
+                    <input type="radio" th:id="'star5' + ${curso.codigo}" name="rate" value="5" />
+                    <label th:for="'star5' + ${curso.codigo}" title="text" th:style="(${curso.valoracion} >= 5) ? 'color: #ffc700' : 'color:#ccc'">5 stars</label>
+                    <input type="radio" th:id="'star4' + ${curso.codigo}" name="rate" value="4" />
+                    <label th:for="'star4' + ${curso.codigo}" title="text" th:style="(${curso.valoracion} >= 4) ? 'color: #ffc700' : 'color:#ccc'">4 stars</label>
+                    <input type="radio" th:id="'star3' + ${curso.codigo}" name="rate" value="3" />
+                    <label th:for="'star3' + ${curso.codigo}" title="text" th:style="(${curso.valoracion} >= 3) ? 'color: #ffc700' : 'color:#ccc'">3 stars</label>
+                    <input type="radio" th:id="'star2' + ${curso.codigo}" name="rate" value="2" />
+                    <label th:for="'star2' + ${curso.codigo}" title="text" th:style="(${curso.valoracion} >= 2) ? 'color: #ffc700' : 'color:#ccc'">2 stars</label>
+                    <input type="radio" th:id="'star1' + ${curso.codigo}" name="rate" value="1" />
+                    <label th:for="'star1' + ${curso.codigo}" title="text" th:style="(${curso.valoracion} >= 1) ? 'color: #ffc700' : 'color:#ccc'">1 star</label>
+                </div>
+                <button>Empezar curso</button>
+            </div>   
+        </div>
+    </topcard>
+
+</body>
+</html>
