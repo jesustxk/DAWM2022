@@ -9,9 +9,9 @@ public class CursoUsuarioDTO implements Serializable {
     
     private Long idCursoUsuario;
     
-    private Integer idCurso;
+    private Long idCurso;
 
-    private Integer idUsuario;
+    private Long idUsuario;
 
     private Integer valoracion;
 

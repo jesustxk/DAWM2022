@@ -20,10 +20,10 @@ public class CursoUsuario {
     private Long idCursoUsuario;
 
     @Column(name = "ID_CURSO", nullable = false)
-    private Integer idCurso;
+    private Long idCurso;
 
     @Column(name = "ID_USUARIO", nullable = false)
-    private Integer idUsuario;
+    private Long idUsuario;
 
     @Column(name = "VALORACION")
     private Integer valoracion;

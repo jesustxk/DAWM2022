@@ -13,9 +13,13 @@ import com.dawm.model.mapper.UsuarioMapper;
 import com.dawm.model.util.ListaCurso;
 import com.dawm.repository.CursoRepository;
 import com.dawm.service.CursoService;
+import com.dawm.service.CursoUsuarioService;
 
 @Service
 public class CursoServiceImpl implements CursoService {
+
+    @Autowired
+    private CursoUsuarioService cursoUsuarioService;
 
     @Autowired
     private CursoRepository cursoRepository;
@@ -131,6 +135,8 @@ public class CursoServiceImpl implements CursoService {
     			tablaCursos.add(new ListaCurso());
                 cont++;
     		}
+
+            curso.setValoracion(this.cursoUsuarioService.getValoracionByIdCurso(curso.getIdCurso()));
     		
     		tablaCursos.get(cont).addCursoDTO(curso);
     		
