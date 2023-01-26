@@ -3,10 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"></script>
     <link type="text/css" th:href="@{/public/css/style.css}" rel="stylesheet"/>
     <link type="text/css" th:href="@{/public/css/styles.css}" rel="stylesheet"/>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -18,7 +16,7 @@
   <sidebar th:insert="generico/sidebar.html :: sidebar"></sidebar>
 
   <div class="home-section" id="perfil">
-    <div class="text">Perfil</div>
+    <div class="text" th:text="'Perfil de ' + ${usuario.username}"></div>
   </div>
 
 
