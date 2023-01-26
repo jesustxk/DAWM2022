@@ -25,7 +25,7 @@ draggerArea.addEventListener('drop', (e) => {
     fileHandler(file)
 });
 const deleteHandler = () => {
-    const draggerElement = ` <div class="icon"><i class="fa-solid fa-images"></i></div> <h5 id="drag-text">Arrastra y suelta la imagen</h5> <h5>o</h5> <button class="browseFile" id="browseFile">navegar</button> <input type="file" hidden id="fileInputField"/>`;
+    const draggerElement = ` <div class="icon"><i class="fa-solid fa-images"></i></div> <h5 id="drag-text">Arrastra y suelta la imagen</h5> <h5>o</h5> <button class="browseFile" id="browseFile">navegar</button> <input type="file" hidden id="fileInputField"  th:field="*{imagen}" />`;
     draggerArea.innerHTML = draggerElement 
     fileName.innerHTML = ""
     draggerArea.classList.remove('active');

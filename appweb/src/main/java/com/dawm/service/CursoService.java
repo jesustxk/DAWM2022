@@ -18,4 +18,6 @@ public interface CursoService {
 
     public List<ListaCurso> getTopCursos();
 
+    public void addCurso(CursoDTO curso);
+
 }

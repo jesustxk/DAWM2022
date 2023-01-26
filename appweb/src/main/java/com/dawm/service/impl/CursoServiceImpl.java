@@ -1,5 +1,6 @@
 package com.dawm.service.impl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +58,15 @@ public class CursoServiceImpl implements CursoService {
     @Override
     public List<ListaCurso> getTopCursos() {
         return this.prepararTablaCursos(
-            this.cursoMapper.asCursoDTOList(this.cursoRepository.findAll()));
+            this.cursoMapper.asCursoDTOList(this.cursoRepository.getTopCursos()));
+    }
+
+    @Override
+    public void addCurso(CursoDTO curso) {
+        curso.setCodigo((Math.random() * 1000 + 1) + curso.getTitulo().substring(0, 4));
+        curso.setFechaAlta(new Date(System.currentTimeMillis()));
+        
+        this.cursoRepository.save(this.cursoMapper.asCurso(curso));
     }
 
     private List<ListaCurso> prepararTablaCursos(List<CursoDTO> cursos) {
