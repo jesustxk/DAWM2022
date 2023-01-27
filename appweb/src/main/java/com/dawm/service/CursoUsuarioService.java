@@ -6,4 +6,6 @@ public interface CursoUsuarioService {
 
     public Integer countMatriculados(Long idCurso);
 
+    public void inscribirse(Long idUsuario, Long idCurso);
+
 }

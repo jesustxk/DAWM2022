@@ -29,6 +29,13 @@ public class SecurityConfig {
             .defaultSuccessUrl("/dashboard", true)
             .failureUrl("/login")
             .permitAll()
+
+            .and()
+            .logout()
+            .logoutSuccessUrl("/login")
+            .invalidateHttpSession(true)
+            .deleteCookies("JSESSIONID")
+            .permitAll()
         	
         	.and().httpBasic().disable()
             .csrf().disable()

@@ -1116,7 +1116,7 @@ output .span--hidden {
   --font-family: cursive;
 }
 
-.wiidgets > div {
+.wiidgets>div {
   display: flex;
 }
 
@@ -1368,7 +1368,8 @@ output .span--hidden {
   align-self: center;
 }
 
-.clock::before, .clock::after {
+.clock::before,
+.clock::after {
   content: '';
   width: 7ch;
   height: 3vh;
@@ -1380,7 +1381,7 @@ output .span--hidden {
   bottom: 0;
 }
 
-.clock > div {
+.clock>div {
   display: flex;
 }
 
@@ -1400,6 +1401,7 @@ output .span--hidden {
   from {
     transform: translateY(0vh);
   }
+
   to {
     transform: translateY(-20vh);
   }
@@ -1411,25 +1413,27 @@ output .span--hidden {
   width: 300px;
   height: 300px;
   perspective: 1000px;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 .card-flip {
   position: relative;
-  display:inline-block;
+  display: inline-block;
   width: 100%;
   height: 100%;
   text-align: center;
   transform-style: preserve-3d;
-	transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+  transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
 }
 
-.card-flip h3, card-flip p {
-  display:block; 
-} 
+.card-flip h3,
+card-flip p {
+  display: block;
+}
 
-.card-flip p, .card-flip button { 
-  color:#FFF; 
+.card-flip p,
+.card-flip button {
+  color: #FFF;
 }
 
 /* GIRA HORIZONTAL */
@@ -1445,7 +1449,8 @@ output .span--hidden {
 */
 
 
-.frente, .dorso{
+.frente,
+.dorso {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1458,7 +1463,7 @@ output .span--hidden {
   background-color: #ffffff;
   color: #000000;
   /*transform: rotateX(180deg);*/
-  text-align:center;
+  text-align: center;
   vertical-align: middle;
   padding: 50px;
   justify-content: center;
@@ -1469,7 +1474,7 @@ output .span--hidden {
   font-style: italic;
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
-  font-size:0.65em;
+  font-size: 0.65em;
 }
 
 
@@ -1493,7 +1498,7 @@ output .span--hidden {
 
 .styled-table th,
 .styled-table td {
-    padding: 12px 15px;
+  padding: 12px 15px;
 }
 
 .styled-table tbody tr {
@@ -1566,7 +1571,7 @@ output .span--hidden {
   transition: 0.5s;
 }
 
-.horizontal-align{
+.horizontal-align {
   display: flex;
 }
 

@@ -20,6 +20,8 @@ public class PerfilControllerImpl implements PerfilController {
     
     public static final String PERFIL = "perfil";
 
+    public static final String REDIRECT_PERFIL = "redirect:/perfil";
+
     public static final String USUARIO = "usuario";
 
     @Autowired
@@ -41,11 +43,11 @@ public class PerfilControllerImpl implements PerfilController {
         return modelAndView;
     }
 
-
+    @Override
     @PostMapping(path = {"/updatePerfil"})
     public ModelAndView setPerfil(Model model, HttpSession session, @ModelAttribute("usuario") UsuarioDTO usuario) {
 
-        ModelAndView modelAndView = new ModelAndView(PERFIL);
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_PERFIL);
 
         modelAndView.addObject(USUARIO, usuarioService.updateUsuario(usuario));
 
