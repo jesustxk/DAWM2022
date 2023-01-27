@@ -44,6 +44,9 @@ public class Curso {
     @Column(name = "IMAGEN")
     private byte[] imagen;
 
+    @Column(name = "ENLACE")
+    private String enlace;
+
     @JoinColumn(name = "ID_USUARIO")
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
