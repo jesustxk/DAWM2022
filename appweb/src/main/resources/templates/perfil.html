@@ -16,7 +16,11 @@
   <sidebar th:insert="generico/sidebar.html :: sidebar"></sidebar>
 
   <div class="home-section" id="perfil">
-    <div class="text" th:text="'Perfil de ' + ${usuario.username}"></div>
+    <div class="head-title">
+      <div class="left">
+        <h1 class="text" th:text="'Perfil de ' + ${usuario.username}"></h1>
+      </div>
+    </div>
   </div>
 
 
