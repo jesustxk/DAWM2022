@@ -1476,6 +1476,7 @@ output .span--hidden {
 .styled-table {
   border-collapse: collapse;
   margin-top: 25px;
+  margin-bottom: 25px;
   width: 90%;
   margin-left: 50px;
   justify-content: center;
@@ -1567,4 +1568,52 @@ output .span--hidden {
 
 .horizontal-align{
   display: flex;
+}
+
+.wrapper-tab {
+  width: 90%;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, .1);
+
+}
+
+.buttonWrapper-tab {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.button-tab {
+  letter-spacing: 3px;
+  border: none;
+  padding: 10px;
+  background-color: #8cadff;
+  color: #000000;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.button-tab:hover {
+  background-color: #a1baed;
+}
+
+.button-tab.active {
+  background-color: white;
+}
+
+.active {
+  background-color: white;
+}
+
+.content {
+  display: none;
+  padding: 10px 20px;
+}
+
+.content.active {
+  display: block;
 }
