@@ -1,151 +1,285 @@
 <!DOCTYPE html>
-<html xmlns:th = "http://www.thymeleaf.org" lang = "es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
-    <link type="text/css" th:href="@{/public/css/style.css}" rel="stylesheet"/>
-    <link type="text/css" th:href="@{/public/css/styles.css}" rel="stylesheet"/>
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <link type="text/css" th:href="@{/public/css/style.css}" rel="stylesheet" />
+  <link type="text/css" th:href="@{/public/css/styles.css}" rel="stylesheet" />
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
 <body>
-  
+
   <sidebar th:insert="generico/sidebar.html :: sidebar"></sidebar>
 
   <div class="home-section" id="usuarios">
     <div class="head-title">
       <div class="left">
-          <h1>Mis cursos</h1>
+        <h1>Mis cursos</h1>
       </div>
     </div>
     <card th:insert="generico/card.html :: card"></card>
 
     <div class="head-title">
       <div class="left">
-          <h1>Actividad reciente</h1>
+        <h1>Progreso cursos</h1>
       </div>
     </div>
-    <table class="styled-table">
-      <thead>
-          <tr>
-              <th>Nombre curso</th>
-              <th>Enlace</th>
-              <th>Descripción</th>
-              <th>Calificación</th>
-              <th>Estado</th>
 
-          </tr>
-      </thead>
-      <tbody>
-          <tr class="active-row">
-              <td>Java</td>
-              <td><a href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas"> Enlace {nombre curso}</a></p> </td>             
-              <td>El mejor curso de Java que puedes encontrar</td>
-              <td>5</td>
-              <td>
-                <div class="horizontal-align">
-                  <button class="btn-table">Completar</button>
-                  <button class="btn-table-eliminar">Eliminar</button>
-                </div>
-              </td>
-          </tr>
-          <tr class="active-row">
-            <td>Java</td>
-            <td><a href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas"> Enlace {nombre curso}</a></p> </td>             
-            <td>El mejor curso de Java que puedes encontrar</td>
-            <td>5</td>
-            <td>
-              <div class="horizontal-align">
-                <button class="btn-table">Completar</button>
-                <button class="btn-table-eliminar">Eliminar</button>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-  </table>
+
+    <div class="wrapper-tab">
+      <div class="buttonWrapper-tab">
+        <button class="tab-button active button-tab" style="border-top-left-radius: 10px;"
+          data-id="pendiente">Pendientes</button>
+        <button class="tab-button button-tab" data-id="enprogreso">En progreso</button>
+        <button class="tab-button button-tab" style="border-top-right-radius: 10px;"
+          data-id="completado">Completados</button>
+      </div>
+      <div class="contentWrapper">
+        <div class="content active" id="pendiente">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Nombre curso</th>
+                <th>Enlace</th>
+                <th>Descripción</th>
+                <th>Calificación</th>
+                <th>Estado</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="active-row">
+                <td>Java</td>
+                <td><a
+                    href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas">
+                    Enlace {nombre curso}</a></p>
+                </td>
+                <td>El mejor curso de Java que puedes encontrar</td>
+                <td>5</td>
+                <td>
+                  <div class="horizontal-align">
+                    <button class="btn-table">Empezar</button>
+                    <button class="btn-table-eliminar">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="active-row">
+                <td>Java</td>
+                <td><a
+                    href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas">
+                    Enlace {nombre curso}</a></p>
+                </td>
+                <td>El mejor curso de Java que puedes encontrar</td>
+                <td>5</td>
+                <td>
+                  <div class="horizontal-align">
+                    <button class="btn-table">Empezar</button>
+                    <button class="btn-table-eliminar">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="content" id="enprogreso">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Nombre curso</th>
+                <th>Enlace</th>
+                <th>Descripción</th>
+                <th>Calificación</th>
+                <th>Estado</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="active-row">
+                <td>Java</td>
+                <td><a
+                    href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas">
+                    Enlace {nombre curso}</a></p>
+                </td>
+                <td>El mejor curso de Java que puedes encontrar</td>
+                <td>5</td>
+                <td>
+                  <div class="horizontal-align">
+                    <button class="btn-table">Completar</button>
+                    <button class="btn-table-eliminar">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="active-row">
+                <td>Java</td>
+                <td><a
+                    href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas">
+                    Enlace {nombre curso}</a></p>
+                </td>
+                <td>El mejor curso de Java que puedes encontrar</td>
+                <td>5</td>
+                <td>
+                  <div class="horizontal-align">
+                    <button class="btn-table">Completar</button>
+                    <button class="btn-table-eliminar">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="content" id="completado">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Nombre curso</th>
+                <th>Enlace</th>
+                <th>Descripción</th>
+                <th>Calificación</th>
+                <th>Estado</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="active-row">
+                <td>Java</td>
+                <td><a
+                    href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas">
+                    Enlace {nombre curso}</a></p>
+                </td>
+                <td>El mejor curso de Java que puedes encontrar</td>
+                <td>5</td>
+                <td>
+                  <div class="horizontal-align">
+                    <button class="btn-table-eliminar">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="active-row">
+                <td>Java</td>
+                <td><a
+                    href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas">
+                    Enlace {nombre curso}</a></p>
+                </td>
+                <td>El mejor curso de Java que puedes encontrar</td>
+                <td>5</td>
+                <td>
+                  <div class="horizontal-align">
+                    <button class="btn-table-eliminar">Eliminar</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 
 
-  
+
   <script>
 
-  let sidebar = document.querySelector(".sidebar");
-  let closeBtn = document.querySelector("#btn");
-  let searchBtn = document.querySelector(".bx-search");
+    let sidebar = document.querySelector(".sidebar");
+    let closeBtn = document.querySelector("#btn");
+    let searchBtn = document.querySelector(".bx-search");
 
-  closeBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("open");
-    menuBtnChange();
-  });
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
 
-  searchBtn.addEventListener("click", ()=>{ 
-    sidebar.classList.toggle("open");
-    menuBtnChange(); 
-  });
+    searchBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
 
     function menuBtnChange() {
-    if(sidebar.classList.contains("open")){
+      if (sidebar.classList.contains("open")) {
         closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-    }else {
-        closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
-    }
+      } else {
+        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      }
     }
 
 
     const indicators = document.querySelectorAll('a');
-   
+
     indicators.forEach((indicator) => {
-    indicator.addEventListener('click', function () {
-    });
+      indicator.addEventListener('click', function () {
+      });
     });
 
     const sections = document.querySelectorAll("section");
 
     const onSectionLeavesViewport = (section) => {
-    const observer = new IntersectionObserver(
+      const observer = new IntersectionObserver(
         (entries) => {
-        entries.forEach((entry) => {
+          entries.forEach((entry) => {
             if (entry.isIntersecting) {
-            const element = entry.target;
-            const indicator = document.querySelector(`a[href='#${element.id}']`);
-            return;
+              const element = entry.target;
+              const indicator = document.querySelector(`a[href='#${element.id}']`);
+              return;
             }
-        
-        });
+
+          });
         },
         {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.75,
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.75,
         }
-    );
-    observer.observe(section);
+      );
+      observer.observe(section);
     };
 
   </script>
 
-   <script type="text/javascript">
-        var main_btn = document.querySelector(".main_btn");
-        var wrapper = document.querySelector(".wrapper");
-        var close_btns = document.querySelectorAll(".close_btn");
-        
-        main_btn.addEventListener("click", function () {
-        wrapper.classList.add("active");
-        });
-        
-        close_btns.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-            wrapper.classList.remove("active");
-        });
-        });
-        
+  <script type="text/javascript">
+    var main_btn = document.querySelector(".main_btn");
+    var wrapper = document.querySelector(".wrapper");
+    var close_btns = document.querySelectorAll(".close_btn");
 
-    </script> 
+    main_btn.addEventListener("click", function () {
+      wrapper.classList.add("active");
+    });
+
+    close_btns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        wrapper.classList.remove("active");
+      });
+    });
+
+
+ 
+  </script>
+
+  <script>
+   const tabs = document.querySelector(".wrapper-tab");
+    const tabButton = document.querySelectorAll(".tab-button");
+    const contents = document.querySelectorAll(".content");
+
+    tabs.onclick = e => {
+      const id = e.target.dataset.id;
+      if (id) {
+        tabButton.forEach(btn => {
+          btn.classList.remove("active");
+        });
+        e.target.classList.add("active");
+
+        contents.forEach(content => {
+          content.classList.remove("active");
+        });
+        const element = document.getElementById(id);
+        element.classList.add("active");
+      }
+    }
+  </script>
 
 </body>
+
 </html>
