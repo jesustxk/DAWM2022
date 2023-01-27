@@ -63,7 +63,7 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public void addCurso(CursoDTO curso) {
-        curso.setCodigo((Math.random() * 1000 + 1) + curso.getTitulo().substring(0, 4));
+        curso.setCodigo((int)((Math.random() * (1000 - 1)) + 1) + curso.getTitulo().substring(0, 3));
         curso.setFechaAlta(new Date(System.currentTimeMillis()));
         
         this.cursoRepository.save(this.cursoMapper.asCurso(curso));

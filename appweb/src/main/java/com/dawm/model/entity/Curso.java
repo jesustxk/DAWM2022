@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -43,7 +42,7 @@ public class Curso {
 
     @Lob
     @Column(name = "IMAGEN")
-    private MultipartFile imagen;
+    private byte[] imagen;
 
     @Column(name = "ENLACE")
     private String enlace;

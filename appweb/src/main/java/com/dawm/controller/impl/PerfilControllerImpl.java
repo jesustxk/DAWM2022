@@ -17,6 +17,8 @@ public class PerfilControllerImpl implements PerfilController {
     
     public static final String PERFIL = "perfil";
 
+    public static final String USUARIO = "usuario";
+
     @Autowired
     private UsuarioService usuarioService;
     
@@ -26,8 +28,12 @@ public class PerfilControllerImpl implements PerfilController {
 
         ModelAndView modelAndView = new ModelAndView(PERFIL);
 
-        modelAndView.addObject("usuario", 
-            usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
+        // Usuario a la sesión
+        if (session.getAttribute(USUARIO) == null) {
+            session.setAttribute(USUARIO, 
+                this.usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
+        }
+        modelAndView.addObject(USUARIO, session.getAttribute(USUARIO));
 
         return modelAndView;
     }

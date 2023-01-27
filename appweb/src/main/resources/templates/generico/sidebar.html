@@ -23,7 +23,7 @@
 
             <div class="logo-profile">
                 <img src="perfil.png" class="profile_image" alt="">
-                    <h4>Sokaina Baouch</h4>
+                    <h4 th:text="${usuario.username}"></h4>
                     <h5>Administrador</h5>
             </div>
 
@@ -57,7 +57,7 @@
             <span class="tooltip">Perfil</span>
             </li>
             <li class="profile">
-                <a href="/login.html">
+                <a href="/login">
                     <i class='bx bx-log-out' ></i>
                     <span class="links_name">Cerrar sesión</span>
                 </a>

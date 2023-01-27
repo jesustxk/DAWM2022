@@ -18,10 +18,6 @@
     <topcard>
         <div class="users" th:each="cursos : ${tablaCursos}">
             <div class="card" th:each="curso : ${cursos.cursos}">
-                <div class="icons-card">
-                    <i class="fa fa-pen-to-square fa-lg"></i>
-                    <i class="fa fa-trash-can fa-lg"></i>
-                </div>
                 <img th:src="${curso.imagen}">
                 <h4 th:text="${curso.titulo}"></h4>
                 <p th:text="${curso.descripcion}"></p>
