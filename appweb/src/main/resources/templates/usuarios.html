@@ -18,9 +18,56 @@
   <sidebar th:insert="generico/sidebar.html :: sidebar"></sidebar>
 
   <div class="home-section" id="usuarios">
-    <div class="text">Usuario</div>
-    <div class="text">Mis cursos</div>
+    <div class="head-title">
+      <div class="left">
+          <h1>Mis cursos</h1>
+      </div>
+    </div>
     <card th:insert="generico/card.html :: card"></card>
+
+    <div class="head-title">
+      <div class="left">
+          <h1>Actividad reciente</h1>
+      </div>
+    </div>
+    <table class="styled-table">
+      <thead>
+          <tr>
+              <th>Nombre curso</th>
+              <th>Enlace</th>
+              <th>Descripción</th>
+              <th>Calificación</th>
+              <th>Estado</th>
+
+          </tr>
+      </thead>
+      <tbody>
+          <tr class="active-row">
+              <td>Java</td>
+              <td><a href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas"> Enlace {nombre curso}</a></p> </td>             
+              <td>El mejor curso de Java que puedes encontrar</td>
+              <td>5</td>
+              <td>
+                <div class="horizontal-align">
+                  <button class="btn-table">Completar</button>
+                  <button class="btn-table-eliminar">Eliminar</button>
+                </div>
+              </td>
+          </tr>
+          <tr class="active-row">
+            <td>Java</td>
+            <td><a href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas"> Enlace {nombre curso}</a></p> </td>             
+            <td>El mejor curso de Java que puedes encontrar</td>
+            <td>5</td>
+            <td>
+              <div class="horizontal-align">
+                <button class="btn-table">Completar</button>
+                <button class="btn-table-eliminar">Eliminar</button>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+  </table>
   </div>
 
 
