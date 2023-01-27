@@ -13,5 +13,9 @@ public interface CursoController {
     public ModelAndView getCursos(Model model, HttpSession session);
 
     public ModelAndView addCurso(@ModelAttribute("curso") CursoDTO curso, Model model, HttpSession session);
+
+    public ModelAndView borrarCurso(@ModelAttribute("curso") CursoDTO curso, Model model, HttpSession session);
+
+    public ModelAndView editarCurso(@ModelAttribute("curso") CursoDTO curso, Model model, HttpSession session);
     
 }

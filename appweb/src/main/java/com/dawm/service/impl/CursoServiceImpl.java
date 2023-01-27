@@ -69,6 +69,16 @@ public class CursoServiceImpl implements CursoService {
         this.cursoRepository.save(this.cursoMapper.asCurso(curso));
     }
 
+    @Override
+    public void editarCurso(CursoDTO curso) {
+        this.cursoRepository.save(this.cursoMapper.asCurso(curso));
+    }
+
+    @Override
+    public void borrarCurso(CursoDTO curso) {
+        this.cursoRepository.delete(this.cursoMapper.asCurso(curso));
+    }
+
     private List<ListaCurso> prepararTablaCursos(List<CursoDTO> cursos) {
         List<ListaCurso> tablaCursos = new ArrayList<>();
         tablaCursos.add(new ListaCurso());

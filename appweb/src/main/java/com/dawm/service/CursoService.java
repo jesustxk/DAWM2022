@@ -20,4 +20,8 @@ public interface CursoService {
 
     public void addCurso(CursoDTO curso);
 
+    public void editarCurso(CursoDTO curso);
+
+    public void borrarCurso(CursoDTO curso);
+
 }

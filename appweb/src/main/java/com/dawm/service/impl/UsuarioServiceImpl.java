@@ -53,7 +53,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuario.setEmail(usuario.getEmail());
         usuario.setEdad(usuario.getEdad());
 
-        this.usuarioRepository.save(usuarioMapper.asUsuario(usuario));
+        this.usuarioRepository.save(this.usuarioMapper.asUsuario(usuario));
         return usuario;
     }
 

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dawm.controller.CursoController;
 import com.dawm.model.dto.CursoDTO;
+import com.dawm.model.dto.UsuarioDTO;
 import com.dawm.service.CursoService;
 import com.dawm.service.UsuarioService;
 
@@ -24,6 +25,10 @@ public class CursoControllerImpl implements CursoController {
     public static final String REDIRECT_CURSOS = "redirect:/cursos";
 
     public static final String USUARIO = "usuario";
+
+    public static final String REDIRECT_USUARIO = "redirect:/usuario";
+
+    public static final String TABLA_CURSOS = "tablaCursos";
 
     @Autowired
     private UsuarioService usuarioService;
@@ -37,7 +42,7 @@ public class CursoControllerImpl implements CursoController {
         
         ModelAndView modelAndView = new ModelAndView(CURSOS);
 
-        modelAndView.addObject("tablaCursos", this.cursoService.getAllCursos());
+        modelAndView.addObject(TABLA_CURSOS, this.cursoService.getAllCursos());
         modelAndView.addObject("curso", new CursoDTO());
         modelAndView.addObject("imagen", "");
 
@@ -63,9 +68,45 @@ public class CursoControllerImpl implements CursoController {
             return new ModelAndView(REDIRECT_CURSOS);
         }
 
-        modelAndView.addObject("tablaCursos", this.cursoService.getAllCursos());
+        modelAndView.addObject(TABLA_CURSOS, this.cursoService.getAllCursos());
         modelAndView.addObject("curso", new CursoDTO());
 
+
+        return modelAndView;
+    }
+
+    @Override
+    @PostMapping(path = {"/editarCurso"})
+    public ModelAndView editarCurso(@ModelAttribute("curso") CursoDTO curso, Model model, HttpSession session) {
+
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_USUARIO);
+        
+        try {
+            this.cursoService.editarCurso(curso);
+        } catch (Exception e) {
+            return new ModelAndView(REDIRECT_CURSOS);
+        }
+
+        modelAndView.addObject(TABLA_CURSOS, 
+            this.cursoService.getCursosMatriculados(((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario()));
+
+        return modelAndView;
+    }
+
+    @Override
+    @PostMapping(path = {"/borrarCurso"})
+    public ModelAndView borrarCurso(@ModelAttribute("curso") CursoDTO curso, Model model, HttpSession session) {
+
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_USUARIO);
+        
+        try {
+            this.cursoService.borrarCurso(curso);
+        } catch (Exception e) {
+            return new ModelAndView(REDIRECT_CURSOS);
+        }
+
+        modelAndView.addObject(TABLA_CURSOS, 
+            this.cursoService.getCursosMatriculados(((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario()));
 
         return modelAndView;
     }

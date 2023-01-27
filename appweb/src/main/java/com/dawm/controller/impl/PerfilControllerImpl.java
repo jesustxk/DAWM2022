@@ -47,8 +47,7 @@ public class PerfilControllerImpl implements PerfilController {
 
         ModelAndView modelAndView = new ModelAndView(PERFIL);
 
-        modelAndView.addObject("usuario", 
-            usuarioService.updateUsuario(usuario));
+        modelAndView.addObject(USUARIO, usuarioService.updateUsuario(usuario));
 
         return modelAndView;
     }
