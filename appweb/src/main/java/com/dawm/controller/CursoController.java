@@ -19,7 +19,6 @@ public interface CursoController {
 
     public ModelAndView editarCurso(@ModelAttribute("curso") CursoDTO curso, Model model, HttpSession session);
 
-    public ModelAndView inscribirse(@RequestParam("idUsuario") Long idUsuario, 
-        @RequestParam("idCurso") Long idCurso, Model model, HttpSession session);
+    public ModelAndView inscribirse(@RequestParam("idCurso") Long idCurso, Model model, HttpSession session);
     
 }

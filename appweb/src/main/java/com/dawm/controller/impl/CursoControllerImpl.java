@@ -28,7 +28,7 @@ public class CursoControllerImpl implements CursoController {
 
     public static final String USUARIO = "usuario";
 
-    public static final String REDIRECT_USUARIO = "redirect:/usuario";
+    public static final String REDIRECT_USUARIOS = "redirect:/usuarios";
 
     public static final String TABLA_CURSOS = "tablaCursos";
 
@@ -84,7 +84,7 @@ public class CursoControllerImpl implements CursoController {
     @PostMapping(path = {"/editarCurso"})
     public ModelAndView editarCurso(@ModelAttribute("curso") CursoDTO curso, Model model, HttpSession session) {
 
-        ModelAndView modelAndView = new ModelAndView(REDIRECT_USUARIO);
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_USUARIOS);
         
         try {
             this.cursoService.editarCurso(curso);
@@ -102,7 +102,7 @@ public class CursoControllerImpl implements CursoController {
     @PostMapping(path = {"/borrarCurso"})
     public ModelAndView borrarCurso(@ModelAttribute("curso") CursoDTO curso, Model model, HttpSession session) {
 
-        ModelAndView modelAndView = new ModelAndView(REDIRECT_USUARIO);
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_USUARIOS);
         
         try {
             this.cursoService.borrarCurso(curso);
@@ -118,13 +118,12 @@ public class CursoControllerImpl implements CursoController {
 
     @Override
     @PostMapping(path = {"/inscribirse"})
-    public ModelAndView inscribirse(@RequestParam("idUsuario") Long idUsuario, 
-        @RequestParam("idCurso") Long idCurso, Model model, HttpSession session) {
+    public ModelAndView inscribirse(@RequestParam("idCurso") Long idCurso, Model model, HttpSession session) {
         
-        ModelAndView modelAndView = new ModelAndView(REDIRECT_USUARIO);
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_USUARIOS);
     
         try {
-            this.cursoUsuarioService.inscribirse(idUsuario, idCurso);
+            this.cursoUsuarioService.inscribirse(((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario(), idCurso);
         } catch (Exception e) {
             return new ModelAndView(REDIRECT_CURSOS);
         }

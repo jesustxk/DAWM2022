@@ -17,7 +17,7 @@ import com.dawm.service.UsuarioService;
 @Controller
 public class UsuarioControllerImpl implements UsuarioController {
 
-    public static final String USUARIOS = "usuarios";
+    public static final String MIS_CURSOS = "mis-cursos";
 
     public static final String USUARIO = "usuario";
 
@@ -28,10 +28,10 @@ public class UsuarioControllerImpl implements UsuarioController {
     private CursoService cursoService;
 
     @Override
-    @GetMapping(path = {"/usuarios"})
+    @GetMapping(path = {"/mis-cursos"})
     public ModelAndView getUsuarios(Model model, HttpSession session) {
 
-        ModelAndView modelAndView = new ModelAndView(USUARIOS);
+        ModelAndView modelAndView = new ModelAndView(MIS_CURSOS);
 
         // Usuario a la sesión
         if (session.getAttribute(USUARIO) == null) {
