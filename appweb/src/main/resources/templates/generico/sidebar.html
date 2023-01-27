@@ -7,7 +7,6 @@
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-    <link type="text/css" th:href="@{/public/css/style.css}" rel="stylesheet"/>
     <link type="text/css" th:href="@{/public/css/styles.css}" rel="stylesheet"/>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
@@ -22,7 +21,7 @@
             
 
             <div class="logo-profile">
-                <img src="perfil.png" class="profile_image" alt="">
+                <img  th:src="@{/public/perfil.png}" class="profile_image" alt="">
                     <h4>Sokaina Baouch</h4>
                     <h5>Administrador</h5>
             </div>
@@ -37,17 +36,17 @@
             </li>
             <li>
                 <a href="/cursos">
-                <i class='bx bx-user'></i>
+                <i class='bx bx-user-pin'></i>
                 <span class="links_name">Cursos</span>
                 </a>
                 <span class="tooltip">Cursos</span>
             </li>
             <li>
             <a href="/usuarios">
-                <i class='bx bx-user-pin' ></i>
-                <span class="links_name">Usuarios</span>
+                <i class='bx bx-user' ></i>
+                <span class="links_name">Mis cursos</span>
             </a>
-            <span class="tooltip">Usuarios</span>
+            <span class="tooltip">Mis cursos</span>
             </li>
             <li>
             <a href="/perfil">
