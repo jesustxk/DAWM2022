@@ -13,14 +13,10 @@
 
 <body>
 
-    <card>
+    <cursoscard>
         <div class="container1">
-            <ul class="users" th:each="cursos : ${tablaCursos}">
-                <li class="card" th:each="curso : ${cursos.cursos}">
-                    <div class="icons-card">
-                        <i class="fa fa-pen-to-square fa-lg"></i>
-                        <i class="fa fa-trash-can fa-lg"></i>
-                    </div>
+            <div class="users" th:each="cursos : ${tablaCursos}">
+                <div class="card" th:each="curso : ${cursos.cursos}">
                     <!-- <img th:src="${curso.imagen}" class="profile_image"> -->
                     <img th:src="@{/public/perfil.png}" class="profile_image" alt="">
                     <div class="elipstext">
@@ -53,10 +49,10 @@
                         <label th:for="'star1' + ${curso.codigo}" title="text">1 star</label>
                     </div>
                     <button>Empezar curso</button>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
-    </card>
+    </cursoscard>
 
 </body>
 
