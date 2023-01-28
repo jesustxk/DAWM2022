@@ -27,5 +27,7 @@ public class CursoDTO implements Serializable {
     private Integer personasInscritas;
 
     private Integer valoracion;
+
+    private Integer inscrito;
     
 }

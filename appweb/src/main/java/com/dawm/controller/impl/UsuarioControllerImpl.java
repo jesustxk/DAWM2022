@@ -40,8 +40,8 @@ public class UsuarioControllerImpl implements UsuarioController {
         }
         modelAndView.addObject(USUARIO, session.getAttribute(USUARIO));
 
-        modelAndView.addObject("tablaCursos", 
-            this.cursoService.getCursosMatriculados(((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario()));
+        modelAndView.addObject("tablaMisCursos", 
+            this.cursoService.getMisCursos(((UsuarioDTO) session.getAttribute(USUARIO))));
 
         return modelAndView;
     }

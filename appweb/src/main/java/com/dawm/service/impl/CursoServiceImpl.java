@@ -50,7 +50,7 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public List<ListaCurso> getCursosPropietario(UsuarioDTO usuarioDTO) {
+    public List<ListaCurso> getMisCursos(UsuarioDTO usuarioDTO) {
         return this.prepararTablaCursos(
             this.cursoMapper.asCursoDTOList(this.cursoRepository.findByUsuario(this.usuarioMapper.asUsuario(usuarioDTO))));
     }
@@ -76,6 +76,7 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public void borrarCurso(CursoDTO curso) {
+        this.cursoUsuarioService.deleteFromIdCurso(curso.getIdCurso());
         this.cursoRepository.delete(this.cursoMapper.asCurso(curso));
     }
 

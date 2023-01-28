@@ -10,4 +10,6 @@ public interface CursoUsuarioService {
 
     public Integer getValoracionByIdCursoAndIdUsuario(Long idCurso, Long idUsuario);
 
+    public void deleteFromIdCurso(Long idCurso);
+
 }

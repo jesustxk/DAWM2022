@@ -44,4 +44,9 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
         return this.cursoUsuarioRepository.findByIdCursoAndIdUsuario(idCurso, idUsuario).getValoracion();
     }
 
+    @Override
+    public void deleteFromIdCurso(Long idCurso) {
+        this.cursoUsuarioRepository.deleteByIdCurso(idCurso);
+    }
+
 }

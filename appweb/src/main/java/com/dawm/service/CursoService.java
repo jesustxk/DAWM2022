@@ -14,7 +14,7 @@ public interface CursoService {
 
     public List<ListaCurso> getCursosMatriculados(Long idUsuario);
 
-    public List<ListaCurso> getCursosPropietario(UsuarioDTO usuarioDTO);
+    public List<ListaCurso> getMisCursos(UsuarioDTO usuarioDTO);
 
     public List<ListaCurso> getTopCursos();
 
