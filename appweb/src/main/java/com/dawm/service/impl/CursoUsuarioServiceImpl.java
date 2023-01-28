@@ -37,4 +37,9 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
         this.cursoUsuarioRepository.save(this.cursoUsuarioMapper.asCursoUsuario(cursoUsuario));
     }
 
+    @Override
+    public Integer getValoracionByIdCursoAndIdUsuario(Long idCurso, Long idUsuario) {
+        return this.cursoUsuarioRepository.findByIdCursoAndIdUsuario(idCurso, idUsuario).getValoracion();
+    }
+
 }

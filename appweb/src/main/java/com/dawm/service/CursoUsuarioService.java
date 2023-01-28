@@ -8,4 +8,6 @@ public interface CursoUsuarioService {
 
     public void inscribirse(Long idUsuario, Long idCurso);
 
+    public Integer getValoracionByIdCursoAndIdUsuario(Long idCurso, Long idUsuario);
+
 }

@@ -28,7 +28,7 @@ public class CursoControllerImpl implements CursoController {
 
     public static final String USUARIO = "usuario";
 
-    public static final String REDIRECT_USUARIOS = "redirect:/usuarios";
+    public static final String REDIRECT_MIS_CURSOS = "redirect:/mis-cursos";
 
     public static final String TABLA_CURSOS = "tablaCursos";
 
@@ -84,7 +84,7 @@ public class CursoControllerImpl implements CursoController {
     @PostMapping(path = {"/editarCurso"})
     public ModelAndView editarCurso(@ModelAttribute("curso") CursoDTO curso, Model model, HttpSession session) {
 
-        ModelAndView modelAndView = new ModelAndView(REDIRECT_USUARIOS);
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_MIS_CURSOS);
         
         try {
             this.cursoService.editarCurso(curso);
@@ -102,7 +102,7 @@ public class CursoControllerImpl implements CursoController {
     @PostMapping(path = {"/borrarCurso"})
     public ModelAndView borrarCurso(@ModelAttribute("curso") CursoDTO curso, Model model, HttpSession session) {
 
-        ModelAndView modelAndView = new ModelAndView(REDIRECT_USUARIOS);
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_MIS_CURSOS);
         
         try {
             this.cursoService.borrarCurso(curso);
@@ -120,7 +120,7 @@ public class CursoControllerImpl implements CursoController {
     @PostMapping(path = {"/inscribirse"})
     public ModelAndView inscribirse(@RequestParam("idCurso") Long idCurso, Model model, HttpSession session) {
         
-        ModelAndView modelAndView = new ModelAndView(REDIRECT_USUARIOS);
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_MIS_CURSOS);
     
         try {
             this.cursoUsuarioService.inscribirse(((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario(), idCurso);
