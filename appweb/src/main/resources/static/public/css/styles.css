@@ -796,6 +796,7 @@ body {
   margin-right: 35px;
   height: 46px;
   padding: 0 10px;
+  pointer-events: none;
 }
 
 .toprate:not(:checked)>input {

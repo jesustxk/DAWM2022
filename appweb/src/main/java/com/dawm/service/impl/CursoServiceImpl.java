@@ -45,32 +45,8 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public List<ListaCurso> getCursosMatriculados(Long idUsuario) {
-        List<ListaCurso> tablaCursos = new ArrayList<>();
-        tablaCursos.add(new ListaCurso());
-
-        int cont = 0;
-        int cont2 = 0;
-
-        List<CursoDTO> cursos = this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosMatriculados(idUsuario));
-
-        for (CursoDTO curso : cursos) {
-            if (cont2 == cursos.size()) {
-                cont2 = 0;
-                
-                tablaCursos.add(new ListaCurso());
-                cont++;
-            }
-
-            // Info extra por cada curso
-            curso.setValoracion(this.cursoUsuarioService.getValoracionByIdCurso(idUsuario));
-            curso.setPersonasInscritas(this.cursoUsuarioService.countMatriculados(curso.getIdCurso()));
-            
-            tablaCursos.get(cont).addCursoDTO(curso);
-            
-            cont2++;
-        }
-        
-        return tablaCursos;
+        return this.prepararTablaCursos(
+            this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosMatriculados(idUsuario)));
     }
 
     @Override

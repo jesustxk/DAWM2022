@@ -34,7 +34,9 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
         cursoUsuario.setIdCurso(idCurso);
         cursoUsuario.setIdUsuario(idUsuario);
 
-        this.cursoUsuarioRepository.save(this.cursoUsuarioMapper.asCursoUsuario(cursoUsuario));
+        if (this.cursoUsuarioRepository.findByIdCursoAndIdUsuario(idCurso, idUsuario) == null) {
+            this.cursoUsuarioRepository.save(this.cursoUsuarioMapper.asCursoUsuario(cursoUsuario));
+        }
     }
 
     @Override

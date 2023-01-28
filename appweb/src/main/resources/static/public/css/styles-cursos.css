@@ -784,49 +784,6 @@ body {
     text-transform: uppercase;
 }
 
-.rate {
-    float: left;
-    margin-left: 45px;
-    height: 46px;
-    padding: 0 10px;
-}
-
-.rate:not(:checked)>input {
-    position: absolute;
-    top: -9999px;
-}
-
-.rate:not(:checked)>label {
-    float: right;
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 30px;
-    color: #ccc;
-}
-
-.rate:not(:checked)>label:before {
-    content: '★ ';
-}
-
-.rate>input:checked~label {
-    color: #ffc700;
-}
-
-.rate:not(:checked)>label:hover,
-.rate:not(:checked)>label:hover~label {
-    color: #deb217;
-}
-
-.rate>input:checked+label:hover,
-.rate>input:checked+label:hover~label,
-.rate>input:checked~label:hover,
-.rate>input:checked~label:hover~label,
-.rate>label:hover~input:checked~label {
-    color: #c59b08;
-}
-
 .toprate {
     float: left;
     flex-direction: column;
@@ -834,7 +791,6 @@ body {
     margin-left: 35px;
     height: 46px;
     padding: 0 10px;
-    pointer-events: none;
 }
 
 .toprate:not(:checked)>input {
@@ -855,6 +811,23 @@ body {
 .toprate:not(:checked)>label:before {
     content: '★ ';
 }
+  
+  .toprate>input:checked~label {
+    color: #ffc700 !important;
+  }
+  
+  .toprate:not(:checked)>label:hover,
+  .toprate:not(:checked)>label:hover~label {
+    color: #deb217 !important; 
+  }
+  
+  .toprate>input:checked+label:hover,
+  .toprate>input:checked+label:hover~label,
+  .toprate>input:checked~label:hover,
+  .toprate>input:checked~label:hover~label,
+  .toprate>label:hover~input:checked~label {
+    color: #c59b08 !important;
+  }
 
 .drag-area {
     height: 150px;
