@@ -28,6 +28,9 @@ public class CursoUsuario {
     @Column(name = "VALORACION")
     private Integer valoracion;
 
+    @Column(name = "INICIADO")
+    private Boolean iniciado;
+
     @Column(name = "COMPLETADO")
     private Boolean completado;
 

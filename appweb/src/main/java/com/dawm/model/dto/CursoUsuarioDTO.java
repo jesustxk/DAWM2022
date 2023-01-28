@@ -15,6 +15,8 @@ public class CursoUsuarioDTO implements Serializable {
 
     private Integer valoracion;
 
+    private Boolean iniciado;
+
     private Boolean completado;
     
 }

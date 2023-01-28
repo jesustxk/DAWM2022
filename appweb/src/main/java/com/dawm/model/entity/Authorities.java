@@ -1,5 +1,7 @@
 package com.dawm.model.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +14,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "AUTHORITIES")
-public class Authorities {
+public class Authorities implements Serializable {
 
     @Id
     @Column(name = "ID_AUTHORITIES")

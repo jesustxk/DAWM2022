@@ -44,4 +44,17 @@ public class UsuarioServiceImpl implements UsuarioService {
         return this.usuarioMapper.asUsuarioDTO(this.usuarioRepository.findByUsername(username));
     }
 
+    @Override
+    public UsuarioDTO updateUsuario(UsuarioDTO usuario) {
+
+        usuario.setNombre(usuario.getNombre());
+        usuario.setUsername(usuario.getUsername());
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+        usuario.setEmail(usuario.getEmail());
+        usuario.setEdad(usuario.getEdad());
+
+        this.usuarioRepository.save(this.usuarioMapper.asUsuario(usuario));
+        return usuario;
+    }
+
 }

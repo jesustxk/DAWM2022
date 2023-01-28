@@ -18,4 +18,10 @@ public interface CursoService {
 
     public List<ListaCurso> getTopCursos();
 
+    public void addCurso(CursoDTO curso);
+
+    public void editarCurso(CursoDTO curso);
+
+    public void borrarCurso(CursoDTO curso);
+
 }

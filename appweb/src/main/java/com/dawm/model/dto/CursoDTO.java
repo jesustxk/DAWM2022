@@ -20,6 +20,8 @@ public class CursoDTO implements Serializable {
 
     private byte[] imagen;
 
+    private String enlace;
+
     private UsuarioDTO usuarioDTO;
 
     private Integer personasInscritas;

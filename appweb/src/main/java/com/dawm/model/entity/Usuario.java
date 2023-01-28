@@ -1,5 +1,6 @@
 package com.dawm.model.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "USERS")
-public class Usuario {
+public class Usuario implements Serializable {
 
     @Id
     @Column(name = "ID_USUARIO")

@@ -6,6 +6,8 @@ import lombok.Data;
 
 @Data
 public class AuthoritiesDTO implements Serializable {
+
+    private Long id;
     
     private String username;
 

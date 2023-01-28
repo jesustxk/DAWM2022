@@ -17,10 +17,6 @@
         <div class="container1">
             <ul class="users" th:each="cursos : ${tablaCursos}">
                 <li class="card" th:each="curso : ${cursos.cursos}">
-                    <div class="icons-card">
-                        <i class="fa fa-pen-to-square fa-lg"></i>
-                        <i class="fa fa-trash-can fa-lg"></i>
-                    </div>
                     <!-- <img th:src="${curso.imagen}" class="profile_image"> -->
                     <img th:src="@{/public/perfil.png}" class="profile_image" alt="">
                     <div class="elipstext">
@@ -56,7 +52,7 @@
                         <label th:for="'star1' + ${curso.codigo}" title="text"
                             th:style="(${curso.valoracion} >= 1) ? 'color: #ffc700' : 'color:#ccc'">1 star</label>
                     </div>
-                    <button>Insribirse</button>
+                    <button>Inscribirse</button>
                 </li>
         </div>
 

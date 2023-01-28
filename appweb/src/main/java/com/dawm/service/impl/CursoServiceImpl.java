@@ -1,5 +1,6 @@
 package com.dawm.service.impl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,8 +45,32 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public List<ListaCurso> getCursosMatriculados(Long idUsuario) {
-        return this.prepararTablaCursos(
-            this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosMatriculados(idUsuario)));
+        List<ListaCurso> tablaCursos = new ArrayList<>();
+        tablaCursos.add(new ListaCurso());
+
+        int cont = 0;
+        int cont2 = 0;
+
+        List<CursoDTO> cursos = this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosMatriculados(idUsuario));
+
+        for (CursoDTO curso : cursos) {
+            if (cont2 == cursos.size()) {
+                cont2 = 0;
+                
+                tablaCursos.add(new ListaCurso());
+                cont++;
+            }
+
+            // Info extra por cada curso
+            curso.setValoracion(this.cursoUsuarioService.getValoracionByIdCurso(idUsuario));
+            curso.setPersonasInscritas(this.cursoUsuarioService.countMatriculados(curso.getIdCurso()));
+            
+            tablaCursos.get(cont).addCursoDTO(curso);
+            
+            cont2++;
+        }
+        
+        return tablaCursos;
     }
 
     @Override
@@ -57,7 +82,25 @@ public class CursoServiceImpl implements CursoService {
     @Override
     public List<ListaCurso> getTopCursos() {
         return this.prepararTablaCursos(
-            this.cursoMapper.asCursoDTOList(this.cursoRepository.findAll()));
+            this.cursoMapper.asCursoDTOList(this.cursoRepository.getTopCursos()));
+    }
+
+    @Override
+    public void addCurso(CursoDTO curso) {
+        curso.setCodigo((int)((Math.random() * (1000 - 1)) + 1) + curso.getTitulo().substring(0, 3));
+        curso.setFechaAlta(new Date(System.currentTimeMillis()));
+        
+        this.cursoRepository.save(this.cursoMapper.asCurso(curso));
+    }
+
+    @Override
+    public void editarCurso(CursoDTO curso) {
+        this.cursoRepository.save(this.cursoMapper.asCurso(curso));
+    }
+
+    @Override
+    public void borrarCurso(CursoDTO curso) {
+        this.cursoRepository.delete(this.cursoMapper.asCurso(curso));
     }
 
     private List<ListaCurso> prepararTablaCursos(List<CursoDTO> cursos) {
