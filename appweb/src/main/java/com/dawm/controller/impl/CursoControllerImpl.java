@@ -66,6 +66,8 @@ public class CursoControllerImpl implements CursoController {
     public ModelAndView addCurso(@ModelAttribute("curso") CursoDTO curso, Model model, HttpSession session) {
         
         ModelAndView modelAndView = new ModelAndView(REDIRECT_CURSOS);
+
+        curso.setUsuario(((UsuarioDTO) session.getAttribute(USUARIO)));
         
         try {
             this.cursoService.addCurso(curso);

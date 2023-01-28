@@ -22,7 +22,7 @@ public class CursoDTO implements Serializable {
 
     private String enlace;
 
-    private UsuarioDTO usuarioDTO;
+    private UsuarioDTO usuario;
 
     private Integer personasInscritas;
 

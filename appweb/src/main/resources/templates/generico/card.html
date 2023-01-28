@@ -3,13 +3,12 @@
 
 <head>
     <title>card</title>
-    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link type="text/css" th:href="@{/public/css/styles.css}" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script type="text/javascript" th:src="@{/public/js/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/public/js/ajax.js}"></script>
@@ -22,12 +21,12 @@
             <ul class="users" th:each="cursos : ${tablaMisCursos}">
                 <li class="card" th:each="curso : ${cursos.cursos}">
                     <div class="icons-card">
-                        <form id="borrarCurso" hidden method="POST"
+                        <form th:id="${curso.codigo}" hidden method="POST"
                             th:action="@{/borrarCurso(idCurso=${curso.idCurso})}"></form>
                         <div>
                             <i class="fa fa-pen-to-square fa-lg"></i>
                         </div>
-                        <a onclick="document.getElementById('borrarCurso').submit();">
+                        <a th:onclick="document.getElementById([[${curso.codigo}]]).submit();">
                             <i class="fa fa-trash-can fa-lg"></i>
                         </a>
                     </div>

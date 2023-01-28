@@ -16,7 +16,7 @@
 
 <body>
 
-  <div class="home-section" id="cursos">
+  <popup>
     <div class="wrapper">
       <div class="popup_wrap">
         <div class="shadow close_btn"></div>
@@ -27,134 +27,57 @@
               <ion-icon name="close-outline" class="i"></ion-icon>
             </span>
           </div>
-          <div class="container">
-            <form th:action="@{/addCurso}" th:object="${curso}" method="POST">
-              <div class="body">
-                <div id="dragger_wrapper">
-                  <div id="dragger">
-                    <div class="icon"><i class="fa-solid fa-images"></i></div>
-                    <h5 id="drag-text">Arrastra y suelta la imagen <br></h5>
-                    <h5>o</h5>
-                    <input type="file" hidden id="fileInputField" accept="image/png, image/jpeg" />
-                    <button class="browseFile" id="browseFile">navega</button>
-                  </div>
-                  <div id="fileName"> </div>
+          <div class="container" th:object="${curso}">
+            <div class="body">
+              <div id="dragger_wrapper">
+                <div id="dragger">
+                  <div class="icon"><i class="fa-solid fa-images"></i></div>
+                  <h5 id="drag-text">Arrastra y suelta la imagen <br></h5>
+                  <h5>o</h5>
+                  <input type="file" hidden id="fileInputField" accept="image/png, image/jpeg" />
+                  <button class="browseFile" id="browseFile">navega</button>
                 </div>
-                <script type="text/javascript" th:src="@{/public/js/index.js}"></script>
+                <div id="fileName"> </div>
+              </div>
+              <script type="text/javascript" th:src="@{/public/js/index.js}"></script>
 
-                <div class="popup_name_wrap">
-                  <p class="label_title">
-                    Nombre curso
-                  </p>
-                  <input type="text" class="input_text" placeholder="Introduce el nombre completo" th:field="*{titulo}">
-                </div>
-                <div class="popup_name_wrap">
-                  <p class="label_title">
-                    Enlace
-                  </p>
-                  <input type="text" class="input_text" placeholder="Introduce el enlace al curso" th:field="*{enlace}">
-                </div>
-                <div class="popup_name_wrap">
-                  <p class="label_title">
-                    Breve descripción
-                  </p>
-                  <input type="text" class="input_text" placeholder="Introduce una breve descripción"
-                    th:field="*{descripcion}">
-                </div>
+              <div class="popup_name_wrap">
+                <p class="label_title">
+                  Nombre curso
+                </p>
+                <input type="text" class="input_text" placeholder="Introduce el nombre completo" th:field="${curso.titulo}">
               </div>
-              <div class="footer">
-                <div class="btn_wrap">
-                  <button class="cancel_btn close_btn">
-                    Cancelar
-                  </button>
-                  <button type="submit" class="create_btn">
-                    Añadir curso
-                  </button>
-                </div>
+              <div class="popup_name_wrap">
+                <p class="label_title">
+                  Enlace
+                </p>
+                <input type="text" class="input_text" placeholder="Introduce el enlace al curso" th:field="${curso.enlace}">
               </div>
+              <div class="popup_name_wrap">
+                <p class="label_title">
+                  Breve descripción
+                </p>
+                <input type="text" class="input_text" placeholder="Introduce una breve descripción"
+                  th:field="${curso.descripcion}">
+              </div>
+            </div>
+            <!-- <form id="anadirCurso" type="#" th:action="@{/addCurso}" th:object="${curso}" method="POST"></form> -->
+            <div class="footer">
+              <div class="btn_wrap">
+                <button class="cancel_btn close_btn">
+                  Cancelar
+                </button>
+                <button class="create_btn" th:onclick="'javascript:addCurso()'">
+                  Añadir curso
+                </button>
+              </div>
+            </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-
-
-  <script>
-
-    let sidebar = document.querySelector(".sidebar");
-    let closeBtn = document.querySelector("#btn");
-    let searchBtn = document.querySelector(".bx-search");
-
-    closeBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("open");
-      menuBtnChange();
-    });
-
-    searchBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("open");
-      menuBtnChange();
-    });
-
-    function menuBtnChange() {
-      if (sidebar.classList.contains("open")) {
-        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-      } else {
-        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-      }
-    }
-
-
-    const indicators = document.querySelectorAll('a');
-
-    indicators.forEach((indicator) => {
-      indicator.addEventListener('click', function () {
-      });
-    });
-
-    const sections = document.querySelectorAll("section");
-
-    const onSectionLeavesViewport = (section) => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const element = entry.target;
-              const indicator = document.querySelector(`a[href='#${element.id}']`);
-              return;
-            }
-
-          });
-        },
-        {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.75,
-        }
-      );
-      observer.observe(section);
-    };
-
-  </script>
-
-  <script type="text/javascript">
-    var main_btn = document.querySelector(".main_btn");
-    var wrapper = document.querySelector(".wrapper");
-    var close_btns = document.querySelectorAll(".close_btn");
-
-    main_btn.addEventListener("click", function () {
-      wrapper.classList.add("active");
-    });
-
-    close_btns.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        wrapper.classList.remove("active");
-      });
-    });
-
-
-  </script>
+  </popup>
 
 </body>
 

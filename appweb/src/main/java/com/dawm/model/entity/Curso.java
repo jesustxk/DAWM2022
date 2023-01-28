@@ -3,9 +3,9 @@ package com.dawm.model.entity;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,7 +49,7 @@ public class Curso implements Serializable {
     private String enlace;
 
     @JoinColumn(name = "ID_USUARIO")
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
 
 }
