@@ -1,6 +1,7 @@
 package com.dawm.model.dto;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import lombok.Data;
 
@@ -18,5 +19,7 @@ public class CursoUsuarioDTO implements Serializable {
     private Boolean iniciado;
 
     private Boolean completado;
+
+    private Date fechaAlta;
     
 }

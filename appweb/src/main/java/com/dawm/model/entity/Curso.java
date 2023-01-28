@@ -32,15 +32,11 @@ public class Curso implements Serializable {
     @Column(name = "CODIGO", nullable = false, unique = true)
     private String codigo;
 
-    @Column(name = "TITULO")
+    @Column(name = "TITULO", nullable = false, unique = true)
     private String titulo;
 
-    @Column(name = "DESCRIPCION")
+    @Column(name = "DESCRIPCION", nullable = false, unique = true)
     private String descripcion;
-
-    @Column(name = "FECHA_ALTA", nullable = false)
-	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss.S")
-	private Date fechaAlta;
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
@@ -53,5 +49,9 @@ public class Curso implements Serializable {
     @JoinColumn(name = "ID_USUARIO")
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
+
+    @Column(name = "FECHA_ALTA", nullable = false)
+	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss.S")
+	private Date fechaAlta;
 
 }

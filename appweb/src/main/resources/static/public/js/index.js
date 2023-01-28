@@ -36,7 +36,7 @@ const fileHandler = (file) => {
         const fileReader = new FileReader();
         fileReader.onload = () => {
             const fileURL = fileReader.result;
-            let imgTag = `<img id="uploadImage" src=${fileURL} alt=""/>`
+            let imgTag = `<img src=${fileURL} alt=""/>`
             draggerArea.innerHTML = imgTag;
             let paragraph = `<div class="fileName"><p>${file.name.split('.')[0]}</p><i class="fa-solid fa-trash-can" onclick={deleteHandler()}></i></div>`
             fileName.innerHTML = paragraph;

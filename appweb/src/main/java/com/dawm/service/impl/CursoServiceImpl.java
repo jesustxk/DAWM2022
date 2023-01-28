@@ -30,12 +30,6 @@ public class CursoServiceImpl implements CursoService {
 
     @Autowired
     private CursoMapper cursoMapper;
-    
-    @Override
-    public String insertCurso(CursoDTO cursoDTO) {
-        return this.cursoRepository.save(
-            this.cursoMapper.asCurso(cursoDTO)).getCodigo();
-    }
 
     @Override
     public List<ListaCurso> getAllCursos() {

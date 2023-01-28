@@ -21,6 +21,8 @@ public class UsuarioDTO implements Serializable {
     private String nombre;
 
     private Integer edad;
+
+    private String descripcion;
     
 	private Date fechaAlta;
 

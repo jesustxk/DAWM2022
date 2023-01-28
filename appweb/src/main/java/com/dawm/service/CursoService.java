@@ -7,8 +7,6 @@ import com.dawm.model.dto.UsuarioDTO;
 import com.dawm.model.util.ListaCurso;
 
 public interface CursoService {
-    
-    public String insertCurso(CursoDTO cursoDTO);
 
     public List<ListaCurso> getAllCursos();
 

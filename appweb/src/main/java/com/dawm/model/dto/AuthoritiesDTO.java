@@ -1,6 +1,7 @@
 package com.dawm.model.dto;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import lombok.Data;
 
@@ -12,5 +13,7 @@ public class AuthoritiesDTO implements Serializable {
     private String username;
 
     private String authority;
+
+    private Date fechaAlta;
     
 }

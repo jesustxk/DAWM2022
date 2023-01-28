@@ -1,5 +1,6 @@
 package com.dawm.service.impl;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
         CursoUsuarioDTO cursoUsuario = new CursoUsuarioDTO();
         cursoUsuario.setIdCurso(idCurso);
         cursoUsuario.setIdUsuario(idUsuario);
+        cursoUsuario.setFechaAlta(new Date(System.currentTimeMillis()));
 
         if (this.cursoUsuarioRepository.findByIdCursoAndIdUsuario(idCurso, idUsuario) == null) {
             this.cursoUsuarioRepository.save(this.cursoUsuarioMapper.asCursoUsuario(cursoUsuario));

@@ -2,7 +2,7 @@ function addCurso() {
 
     var img = document.getElementById('dragger').innerHTML
 
-    var cursoPrueba = { imagen : img.substring(27, img.length - 9),
+    var cursoPrueba = { imagen : img.substring(10, img.length - 9),
         titulo : $('#titulo').val(),
         enlace : $('#enlace').val(),
         descripcion: $('#descripcion').val()
