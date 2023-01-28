@@ -22,8 +22,13 @@
             <ul class="users" th:each="cursos : ${tablaMisCursos}">
                 <li class="card" th:each="curso : ${cursos.cursos}">
                     <div class="icons-card">
-                        <i class="fa fa-pen-to-square fa-lg"></i>
-                        <i class="fa fa-trash-can fa-lg"></i>
+                        <form id="borrarCurso" hidden method="POST" th:action="@{/borrarCurso(idCurso=${curso.idCurso})}"></form>
+                        <div>
+                            <i class="fa fa-pen-to-square fa-lg"></i>
+                        </div>
+                        <a onclick="document.getElementById('borrarCurso').submit();">
+                            <i class="fa fa-trash-can fa-lg"></i>
+                        </a>
                     </div>
                     <!-- <img th:src="${curso.imagen}" class="profile_image"> -->
                     <img th:src="@{/public/perfil.png}" class="profile_image" alt="">

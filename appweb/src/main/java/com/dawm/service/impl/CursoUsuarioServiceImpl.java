@@ -1,5 +1,7 @@
 package com.dawm.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,8 +47,18 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
     }
 
     @Override
-    public void deleteFromIdCurso(Long idCurso) {
-        this.cursoUsuarioRepository.deleteByIdCurso(idCurso);
+    public void deleteFromIdCursoUsuario(Long idCursoUsuario) {
+        this.cursoUsuarioRepository.deleteById(idCursoUsuario);
+    }
+
+    @Override
+    public void deleteFromIdCursoUsuarioList(List<Long> idCursoUsuarioList) {
+        this.cursoUsuarioRepository.deleteAllByIdInBatch(idCursoUsuarioList);
+    }
+
+    @Override
+    public List<Long> getCursoUsuarioByIdCurso(Long idCurso) {
+        return this.cursoUsuarioRepository.getCursoUsuarioByIdCurso(idCurso);
     }
 
 }

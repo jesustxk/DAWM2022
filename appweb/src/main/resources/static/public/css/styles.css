@@ -1033,6 +1033,7 @@ output .span--hidden {
   margin-top: 5px;
   justify-content: end;
   text-align: right;
+  display: flex;
 }
 
 .elipstext>span,

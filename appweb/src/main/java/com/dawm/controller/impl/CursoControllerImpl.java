@@ -89,7 +89,7 @@ public class CursoControllerImpl implements CursoController {
         try {
             this.cursoService.editarCurso(curso);
         } catch (Exception e) {
-            return new ModelAndView(REDIRECT_CURSOS);
+            return new ModelAndView(REDIRECT_MIS_CURSOS);
         }
 
         modelAndView.addObject(TABLA_CURSOS, 
@@ -107,7 +107,7 @@ public class CursoControllerImpl implements CursoController {
         try {
             this.cursoService.borrarCurso(curso);
         } catch (Exception e) {
-            return new ModelAndView(REDIRECT_CURSOS);
+            return new ModelAndView(REDIRECT_MIS_CURSOS);
         }
 
         modelAndView.addObject(TABLA_CURSOS, 

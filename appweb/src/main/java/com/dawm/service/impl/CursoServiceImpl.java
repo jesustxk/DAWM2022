@@ -76,7 +76,7 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public void borrarCurso(CursoDTO curso) {
-        this.cursoUsuarioService.deleteFromIdCurso(curso.getIdCurso());
+        this.cursoUsuarioService.deleteFromIdCursoUsuarioList(this.cursoUsuarioService.getCursoUsuarioByIdCurso(curso.getIdCurso()));
         this.cursoRepository.delete(this.cursoMapper.asCurso(curso));
     }
 
