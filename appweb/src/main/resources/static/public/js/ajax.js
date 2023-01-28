@@ -1,6 +1,8 @@
 function addCurso() {
 
-    var cursoPrueba = { imagen : document.getElementById('dragger').innerHTML,
+    var img = document.getElementById('dragger').innerHTML
+
+    var cursoPrueba = { imagen : img.substring(27, img.length - 9),
         titulo : $('#titulo').val(),
         enlace : $('#enlace').val(),
         descripcion: $('#descripcion').val()
@@ -12,8 +14,6 @@ function addCurso() {
         data: cursoPrueba,
         cache: false,
         success: function() {
-            alert("Curso incorporado.");
-            document.getElementById('uploadImagen').src;
         }
     });
 }

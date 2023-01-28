@@ -3,6 +3,7 @@ package com.dawm.model.entity;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,8 +43,9 @@ public class Curso implements Serializable {
 	private Date fechaAlta;
 
     @Lob
-    @Column(name = "IMAGEN")
-    private byte[] imagen;
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "IMAGEN", columnDefinition = "LONGBLOB")
+    private String imagen;
 
     @Column(name = "ENLACE")
     private String enlace;

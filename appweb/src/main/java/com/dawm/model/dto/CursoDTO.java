@@ -18,7 +18,7 @@ public class CursoDTO implements Serializable {
 
 	private Date fechaAlta;
 
-    private byte[] imagen;
+    private String imagen;
 
     private String enlace;
 

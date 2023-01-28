@@ -17,8 +17,8 @@
         <div class="container1">
             <div class="users" th:each="cursos : ${tablaCursos}">
                 <div class="card" th:each="curso : ${cursos.cursos}">
-                    <!-- <img th:src="${curso.imagen}" class="profile_image"> -->
-                    <img th:src="@{/public/perfil.png}" class="profile_image" alt="">
+                    <img th:src="${curso.imagen}" class="profile_image" alt="">
+                    <!-- <img th:src="@{/public/perfil.png}" class="profile_image" alt=""> -->
                     <div class="elipstext">
                         <h4 th:title="${curso.titulo}" th:text="${curso.titulo}"></h4>
                     </div>

@@ -67,6 +67,8 @@ public class CursoControllerImpl implements CursoController {
         
         ModelAndView modelAndView = new ModelAndView(REDIRECT_CURSOS);
 
+        System.out.println(curso.getImagen());
+
         curso.setUsuario(((UsuarioDTO) session.getAttribute(USUARIO)));
         
         try {
