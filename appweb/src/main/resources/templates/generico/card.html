@@ -22,7 +22,8 @@
             <ul class="users" th:each="cursos : ${tablaMisCursos}">
                 <li class="card" th:each="curso : ${cursos.cursos}">
                     <div class="icons-card">
-                        <form id="borrarCurso" hidden method="POST" th:action="@{/borrarCurso(idCurso=${curso.idCurso})}"></form>
+                        <form id="borrarCurso" hidden method="POST"
+                            th:action="@{/borrarCurso(idCurso=${curso.idCurso})}"></form>
                         <div>
                             <i class="fa fa-pen-to-square fa-lg"></i>
                         </div>
@@ -51,19 +52,19 @@
                     </div>
                     <div class="toprate">
                         <input type="radio" th:id="'star5' + ${curso.codigo}" name="rate" value="5" />
-                        <label th:for="'star5' + ${curso.codigo}" title="text" 
+                        <label th:for="'star5' + ${curso.codigo}" title="text"
                             th:style="(${curso.valoracion} >= 5) ? 'color: #ffc700' : 'color:#ccc'">5 stars</label>
                         <input type="radio" th:id="'star4' + ${curso.codigo}" name="rate" value="4" />
-                        <label th:for="'star4' + ${curso.codigo}" title="text" 
+                        <label th:for="'star4' + ${curso.codigo}" title="text"
                             th:style="(${curso.valoracion} >= 4) ? 'color: #ffc700' : 'color:#ccc'">4 stars</label>
                         <input type="radio" th:id="'star3' + ${curso.codigo}" name="rate" value="3" />
-                        <label th:for="'star3' + ${curso.codigo}" title="text" 
+                        <label th:for="'star3' + ${curso.codigo}" title="text"
                             th:style="(${curso.valoracion} >= 3) ? 'color: #ffc700' : 'color:#ccc'">3 stars</label>
                         <input type="radio" th:id="'star2' + ${curso.codigo}" name="rate" value="2" />
-                        <label th:for="'star2' + ${curso.codigo}" title="text" 
+                        <label th:for="'star2' + ${curso.codigo}" title="text"
                             th:style="(${curso.valoracion} >= 2) ? 'color: #ffc700' : 'color:#ccc'">2 stars</label>
                         <input type="radio" th:id="'star1' + ${curso.codigo}" name="rate" value="1" />
-                        <label th:for="'star1' + ${curso.codigo}" title="text" 
+                        <label th:for="'star1' + ${curso.codigo}" title="text"
                             th:style="(${curso.valoracion} >= 1) ? 'color: #ffc700' : 'color:#ccc'">1 star</label>
                     </div>
                 </li>
