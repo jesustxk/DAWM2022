@@ -28,7 +28,7 @@ public class PerfilControllerImpl implements PerfilController {
     private UsuarioService usuarioService;
 
     @Override
-    @GetMapping(path = { "/perfil" })
+    @GetMapping(path = {"/perfil"})
     public ModelAndView getPerfil(Model model, HttpSession session) {
 
         ModelAndView modelAndView = new ModelAndView(PERFIL);
@@ -44,7 +44,7 @@ public class PerfilControllerImpl implements PerfilController {
     }
 
     @Override
-    @PostMapping(path = { "/updatePerfil" })
+    @PostMapping(path = {"/updatePerfil"})
     public ModelAndView updatePerfil(@ModelAttribute("usuario") UsuarioDTO usuario, Model model, HttpSession session) {
 
         ModelAndView modelAndView = new ModelAndView(REDIRECT_PERFIL);
