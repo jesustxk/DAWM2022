@@ -3,6 +3,7 @@ package com.dawm.model.entity;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,19 +32,16 @@ public class Curso implements Serializable {
     @Column(name = "CODIGO", nullable = false, unique = true)
     private String codigo;
 
-    @Column(name = "TITULO")
+    @Column(name = "TITULO", nullable = false, unique = true)
     private String titulo;
 
-    @Column(name = "DESCRIPCION")
+    @Column(name = "DESCRIPCION", nullable = false, unique = true)
     private String descripcion;
 
-    @Column(name = "FECHA_ALTA", nullable = false)
-	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss.S")
-	private Date fechaAlta;
-
     @Lob
-    @Column(name = "IMAGEN")
-    private byte[] imagen;
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "IMAGEN", columnDefinition = "LONGBLOB")
+    private String imagen;
 
     @Column(name = "ENLACE")
     private String enlace;
@@ -51,5 +49,9 @@ public class Curso implements Serializable {
     @JoinColumn(name = "ID_USUARIO")
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
+
+    @Column(name = "FECHA_ALTA", nullable = false)
+	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss.S")
+	private Date fechaAlta;
 
 }

@@ -1,5 +1,8 @@
 package com.dawm.service.impl;
 
+import java.sql.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +19,7 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
 
     @Autowired
     private CursoUsuarioMapper cursoUsuarioMapper;
-    
+
     @Override
     public Integer getValoracionByIdCurso(Long idCurso) {
         return this.cursoUsuarioRepository.getValoracionByIdCurso(idCurso);
@@ -33,13 +36,31 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
         CursoUsuarioDTO cursoUsuario = new CursoUsuarioDTO();
         cursoUsuario.setIdCurso(idCurso);
         cursoUsuario.setIdUsuario(idUsuario);
+        cursoUsuario.setFechaAlta(new Date(System.currentTimeMillis()));
 
-        this.cursoUsuarioRepository.save(this.cursoUsuarioMapper.asCursoUsuario(cursoUsuario));
+        if (this.cursoUsuarioRepository.findByIdCursoAndIdUsuario(idCurso, idUsuario) == null) {
+            this.cursoUsuarioRepository.save(this.cursoUsuarioMapper.asCursoUsuario(cursoUsuario));
+        }
     }
 
     @Override
     public Integer getValoracionByIdCursoAndIdUsuario(Long idCurso, Long idUsuario) {
         return this.cursoUsuarioRepository.findByIdCursoAndIdUsuario(idCurso, idUsuario).getValoracion();
+    }
+
+    @Override
+    public void deleteFromIdCursoUsuario(Long idCursoUsuario) {
+        this.cursoUsuarioRepository.deleteById(idCursoUsuario);
+    }
+
+    @Override
+    public void deleteFromIdCursoUsuarioList(List<Long> idCursoUsuarioList) {
+        this.cursoUsuarioRepository.deleteAllByIdInBatch(idCursoUsuarioList);
+    }
+
+    @Override
+    public List<Long> getCursoUsuarioByIdCurso(Long idCurso) {
+        return this.cursoUsuarioRepository.getCursoUsuarioByIdCurso(idCurso);
     }
 
 }

@@ -12,6 +12,6 @@ public interface PerfilController {
     
     public ModelAndView getPerfil(Model model, HttpSession session);
 
-    public ModelAndView setPerfil(Model model, HttpSession session, @ModelAttribute("usuario") UsuarioDTO usuario);
+    public ModelAndView updatePerfil(@ModelAttribute("usuario") UsuarioDTO usuario, Model model, HttpSession session);
 
 }

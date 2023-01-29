@@ -42,6 +42,9 @@ public class Usuario implements Serializable {
     @Column(name = "EDAD")
     private Integer edad;
 
+    @Column(name = "DESCRIPCION")
+    private String descripcion;
+
     @Column(name = "FECHA_ALTA", nullable = false)
 	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss.S")
 	private Date fechaAlta;

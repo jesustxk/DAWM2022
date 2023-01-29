@@ -1,5 +1,7 @@
 package com.dawm.service.impl;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +21,12 @@ public class AuthoritiesServiceImpl implements AuthoritiesService {
 
     @Override
     public void addAuthority(String username) {
-        AuthoritiesDTO authoritiesDTO = new AuthoritiesDTO();
-        authoritiesDTO.setUsername(username);
-        authoritiesDTO.setAuthority("read");
+        AuthoritiesDTO authorities = new AuthoritiesDTO();
+        authorities.setUsername(username);
+        authorities.setAuthority("read");
+        authorities.setFechaAlta(new Date(System.currentTimeMillis()));
 
-        this.authoritiesRepository.save(this.authoritiesMapper.asAuthorities(authoritiesDTO));
+        this.authoritiesRepository.save(this.authoritiesMapper.asAuthorities(authorities));
     }
 
 }

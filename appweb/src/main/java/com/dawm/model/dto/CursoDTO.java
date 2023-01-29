@@ -16,16 +16,18 @@ public class CursoDTO implements Serializable {
 
     private String descripcion;
 
-	private Date fechaAlta;
-
-    private byte[] imagen;
+    private String imagen;
 
     private String enlace;
 
-    private UsuarioDTO usuarioDTO;
+    private UsuarioDTO usuario;
+
+    private Date fechaAlta;
 
     private Integer personasInscritas;
 
     private Integer valoracion;
+
+    private Integer inscrito;
     
 }

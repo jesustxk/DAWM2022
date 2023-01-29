@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 
 <head>
-    <meta charset="UTF-8" />
+    <title>card-cursos</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link type="text/css" th:href="@{/public/css/styles.css}" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -17,8 +17,7 @@
         <div class="container1">
             <div class="users" th:each="cursos : ${tablaCursos}">
                 <div class="card" th:each="curso : ${cursos.cursos}">
-                    <!-- <img th:src="${curso.imagen}" class="profile_image"> -->
-                    <img th:src="@{/public/perfil.png}" class="profile_image" alt="">
+                    <img th:src="${curso.imagen}" class="profile_image" alt="">
                     <div class="elipstext">
                         <h4 th:title="${curso.titulo}" th:text="${curso.titulo}"></h4>
                     </div>

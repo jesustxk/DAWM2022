@@ -7,14 +7,12 @@ import com.dawm.model.dto.UsuarioDTO;
 import com.dawm.model.util.ListaCurso;
 
 public interface CursoService {
-    
-    public String insertCurso(CursoDTO cursoDTO);
 
-    public List<ListaCurso> getAllCursos();
+    public List<ListaCurso> getCursosNoMatriculadosNoPropietario(Long idUsuario);
 
     public List<ListaCurso> getCursosMatriculados(Long idUsuario);
 
-    public List<ListaCurso> getCursosPropietario(UsuarioDTO usuarioDTO);
+    public List<ListaCurso> getMisCursos(UsuarioDTO usuarioDTO);
 
     public List<ListaCurso> getTopCursos();
 
