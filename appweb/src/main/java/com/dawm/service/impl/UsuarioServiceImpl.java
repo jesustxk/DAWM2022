@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.dawm.model.dto.UsuarioDTO;
+import com.dawm.model.entity.Usuario;
 import com.dawm.model.mapper.UsuarioMapper;
 import com.dawm.model.util.UserData;
 import com.dawm.repository.UsuarioRepository;
@@ -43,10 +44,36 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public void updateUsuario(UsuarioDTO usuario) {
-        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+    public UsuarioDTO updateUsuario(UsuarioDTO usuario) {
+        UsuarioDTO usuarioDTO = this.getUsuario(usuario.getUsername());
 
-        this.usuarioRepository.save(this.usuarioMapper.asUsuario(usuario));
+        usuarioDTO.setNombre(usuario.getNombre());
+        usuarioDTO.setEmail(usuario.getEmail());
+        usuarioDTO.setEdad(usuario.getEdad());
+        usuarioDTO.setDescripcion(usuario.getDescripcion());
+
+        if (usuario.getPassword4().equals("")) {
+            if (usuario.getPassword5().equals("")
+                && usuario.getPassword5().equals(usuario.getPassword6())) {
+                    Usuario usuarioAux = this.usuarioRepository.save(this.usuarioMapper.asUsuario(usuarioDTO));
+                    // Se actualiza usuario sin cambiar contraseña
+
+                    return this.usuarioMapper.asUsuarioDTO(usuarioAux);
+            }
+        } else {
+            if (passwordEncoder.matches(usuario.getPassword4(), usuarioDTO.getPassword())
+                && usuario.getPassword5().equals(usuario.getPassword6())
+                && !usuario.getPassword5().equals("")) {
+
+                    usuarioDTO.setPassword(passwordEncoder.encode(usuario.getPassword5()));
+                    Usuario usuarioAux = this.usuarioRepository.save(this.usuarioMapper.asUsuario(usuarioDTO));
+                    // Se actualiza usuario cambiando contraseña
+
+                    return this.usuarioMapper.asUsuarioDTO(usuarioAux);
+            }
+        }
+        // Cualquier otro caso no se actualiza nada (recogemos de nuevo para que no le falten campos)
+        return this.usuarioMapper.asUsuarioDTO(this.usuarioRepository.findByUsername(usuario.getUsername()));
     }
 
 }

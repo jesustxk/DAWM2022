@@ -9,5 +9,6 @@ public interface UsuarioService {
 
     public UsuarioDTO getUsuario(String username);
     
-    public void updateUsuario(UsuarioDTO usuario);
+    public UsuarioDTO updateUsuario(UsuarioDTO usuario);
+    
 }

@@ -1469,6 +1469,7 @@ card-flip p {
   vertical-align: middle;
   padding: 50px;
   justify-content: center;
+  border-radius: 30px;
 }
 
 .frente .info {

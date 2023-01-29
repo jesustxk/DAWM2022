@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,9 @@ public class PerfilControllerImpl implements PerfilController {
     public static final String REDIRECT_PERFIL = "redirect:/perfil";
 
     public static final String USUARIO = "usuario";
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     private UsuarioService usuarioService;
@@ -47,14 +51,9 @@ public class PerfilControllerImpl implements PerfilController {
     @PostMapping(path = {"/updatePerfil"})
     public ModelAndView updatePerfil(@ModelAttribute("usuario") UsuarioDTO usuario, Model model, HttpSession session) {
 
-        ModelAndView modelAndView = new ModelAndView(REDIRECT_PERFIL);
-        this.usuarioService.updateUsuario(usuario);
+        ModelAndView modelAndView = new ModelAndView(PERFIL);
 
-        // Usuario a la sesión
-        if (session.getAttribute(USUARIO) == null) {
-            session.setAttribute(USUARIO,
-                    this.usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
-        }
+        session.setAttribute(USUARIO, this.usuarioService.updateUsuario(usuario));
         modelAndView.addObject(USUARIO, session.getAttribute(USUARIO));
 
         return modelAndView;
