@@ -32,34 +32,35 @@ public class CursoServiceImpl implements CursoService {
     private CursoMapper cursoMapper;
 
     @Override
-    public List<ListaCurso> getAllCursos() {
+    public List<ListaCurso> getCursosNoMatriculadosNoPropietario(Long idUsuario) {
         return this.prepararTablaCursos(
-            this.cursoMapper.asCursoDTOList(this.cursoRepository.findAll()));
+                this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosNoMatriculadosNoPropietario(idUsuario)));
     }
 
     @Override
     public List<ListaCurso> getCursosMatriculados(Long idUsuario) {
         return this.prepararTablaCursos(
-            this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosMatriculados(idUsuario)));
+                this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosMatriculados(idUsuario)));
     }
 
     @Override
     public List<ListaCurso> getMisCursos(UsuarioDTO usuarioDTO) {
         return this.prepararTablaCursos(
-            this.cursoMapper.asCursoDTOList(this.cursoRepository.findByUsuario(this.usuarioMapper.asUsuario(usuarioDTO))));
+                this.cursoMapper
+                        .asCursoDTOList(this.cursoRepository.findByUsuario(this.usuarioMapper.asUsuario(usuarioDTO))));
     }
 
     @Override
     public List<ListaCurso> getTopCursos() {
         return this.prepararTablaCursos(
-            this.cursoMapper.asCursoDTOList(this.cursoRepository.getTopCursos()));
+                this.cursoMapper.asCursoDTOList(this.cursoRepository.getTopCursos()));
     }
 
     @Override
     public void addCurso(CursoDTO curso) {
-        curso.setCodigo((int)((Math.random() * (1000 - 1)) + 1) + curso.getTitulo().substring(0, 3));
+        curso.setCodigo((int) ((Math.random() * (1000 - 1)) + 1) + curso.getTitulo().substring(0, 3));
         curso.setFechaAlta(new Date(System.currentTimeMillis()));
-        
+
         this.cursoRepository.save(this.cursoMapper.asCurso(curso));
     }
 
@@ -70,7 +71,8 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public void borrarCurso(CursoDTO curso) {
-        this.cursoUsuarioService.deleteFromIdCursoUsuarioList(this.cursoUsuarioService.getCursoUsuarioByIdCurso(curso.getIdCurso()));
+        this.cursoUsuarioService
+                .deleteFromIdCursoUsuarioList(this.cursoUsuarioService.getCursoUsuarioByIdCurso(curso.getIdCurso()));
         this.cursoRepository.delete(this.cursoMapper.asCurso(curso));
     }
 
@@ -83,20 +85,20 @@ public class CursoServiceImpl implements CursoService {
 
         for (CursoDTO curso : cursos) {
             if (cont2 == cursos.size()) {
-    			cont2 = 0;
-    			
-    			tablaCursos.add(new ListaCurso());
+                cont2 = 0;
+
+                tablaCursos.add(new ListaCurso());
                 cont++;
-    		}
+            }
 
             // Info extra por cada curso
             this.setInfoExtraCurso(curso);
-    		
-    		tablaCursos.get(cont).addCursoDTO(curso);
-    		
-    		cont2++;
+
+            tablaCursos.get(cont).addCursoDTO(curso);
+
+            cont2++;
         }
-        
+
         return tablaCursos;
     }
 

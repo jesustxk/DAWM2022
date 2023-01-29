@@ -17,7 +17,7 @@ import com.dawm.service.UsuarioService;
 
 @Controller
 public class PerfilControllerImpl implements PerfilController {
-    
+
     public static final String PERFIL = "perfil";
 
     public static final String REDIRECT_PERFIL = "redirect:/perfil";
@@ -26,17 +26,17 @@ public class PerfilControllerImpl implements PerfilController {
 
     @Autowired
     private UsuarioService usuarioService;
-    
+
     @Override
-    @GetMapping(path = {"/perfil"})
+    @GetMapping(path = { "/perfil" })
     public ModelAndView getPerfil(Model model, HttpSession session) {
 
         ModelAndView modelAndView = new ModelAndView(PERFIL);
 
         // Usuario a la sesión
         if (session.getAttribute(USUARIO) == null) {
-            session.setAttribute(USUARIO, 
-                this.usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
+            session.setAttribute(USUARIO,
+                    this.usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
         }
         modelAndView.addObject(USUARIO, session.getAttribute(USUARIO));
 
@@ -44,12 +44,18 @@ public class PerfilControllerImpl implements PerfilController {
     }
 
     @Override
-    @PostMapping(path = {"/updatePerfil"})
-    public ModelAndView setPerfil(Model model, HttpSession session, @ModelAttribute("usuario") UsuarioDTO usuario) {
+    @PostMapping(path = { "/updatePerfil" })
+    public ModelAndView updatePerfil(@ModelAttribute("usuario") UsuarioDTO usuario, Model model, HttpSession session) {
 
         ModelAndView modelAndView = new ModelAndView(REDIRECT_PERFIL);
+        this.usuarioService.updateUsuario(usuario);
 
-        modelAndView.addObject(USUARIO, usuarioService.updateUsuario(usuario));
+        // Usuario a la sesión
+        if (session.getAttribute(USUARIO) == null) {
+            session.setAttribute(USUARIO,
+                    this.usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
+        }
+        modelAndView.addObject(USUARIO, session.getAttribute(USUARIO));
 
         return modelAndView;
     }

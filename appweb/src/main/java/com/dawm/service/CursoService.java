@@ -8,7 +8,7 @@ import com.dawm.model.util.ListaCurso;
 
 public interface CursoService {
 
-    public List<ListaCurso> getAllCursos();
+    public List<ListaCurso> getCursosNoMatriculadosNoPropietario(Long idUsuario);
 
     public List<ListaCurso> getCursosMatriculados(Long idUsuario);
 

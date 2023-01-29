@@ -15,6 +15,9 @@ public interface CursoRepository extends JpaRepository<Curso, Long> {
 
     List<Curso> findByUsuario(Usuario usuario);
 
+    @Query(value = "SELECT c.* FROM CURSO c INNER JOIN CURSO_USUARIO cu ON c.ID_CURSO = cu.ID_CURSO WHERE c.ID_USUARIO != :idUsuario AND cu.ID_USUARIO != :idUsuario", nativeQuery = true)
+    List<Curso> getCursosNoMatriculadosNoPropietario(@Param("idUsuario") Long idUsuario);
+
     @Query(value = "SELECT c.* FROM CURSO c INNER JOIN CURSO_USUARIO cu ON c.ID_CURSO = cu.ID_CURSO WHERE cu.ID_USUARIO = :idUsuario AND cu.COMPLETADO IS NULL", nativeQuery = true)
     List<Curso> getCursosMatriculados(@Param("idUsuario") Long idUsuario);
 

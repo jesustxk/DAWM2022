@@ -19,7 +19,7 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
 
     @Autowired
     private CursoUsuarioMapper cursoUsuarioMapper;
-    
+
     @Override
     public Integer getValoracionByIdCurso(Long idCurso) {
         return this.cursoUsuarioRepository.getValoracionByIdCurso(idCurso);

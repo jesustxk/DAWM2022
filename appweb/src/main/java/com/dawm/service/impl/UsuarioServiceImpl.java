@@ -14,7 +14,7 @@ import com.dawm.service.UsuarioService;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
-    
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -23,7 +23,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioMapper usuarioMapper;
-    
 
     @Override
     public void addUsuario(UserData userData) {
@@ -36,7 +35,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuarioDTO.setFechaAlta(new Date(System.currentTimeMillis()));
 
         this.usuarioRepository.save(usuarioMapper.asUsuario(usuarioDTO));
-        
     }
 
     @Override
@@ -45,16 +43,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UsuarioDTO updateUsuario(UsuarioDTO usuario) {
-
-        usuario.setNombre(usuario.getNombre());
-        usuario.setUsername(usuario.getUsername());
+    public void updateUsuario(UsuarioDTO usuario) {
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-        usuario.setEmail(usuario.getEmail());
-        usuario.setEdad(usuario.getEdad());
 
         this.usuarioRepository.save(this.usuarioMapper.asUsuario(usuario));
-        return usuario;
     }
 
 }
