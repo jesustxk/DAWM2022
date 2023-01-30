@@ -26,4 +26,6 @@ public interface CursoUsuarioService {
 
     public Boolean isInscrito(Long idUsuario, Long idCurso);
 
+    public void valorarCurso(Long idUsuario, Long idCurso, Integer valoracion);
+
 }

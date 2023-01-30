@@ -32,7 +32,7 @@ public class CursoServiceImpl implements CursoService {
     private CursoMapper cursoMapper;
 
     @Override
-    public List<ListaCurso> getCursosNoMatriculadosNoPropietario(Long idUsuario) {
+    public List<ListaCurso> getCursosNoPropietario(Long idUsuario) {
         List<ListaCurso> tablaCursos = new ArrayList<>();
         tablaCursos.add(new ListaCurso());
 

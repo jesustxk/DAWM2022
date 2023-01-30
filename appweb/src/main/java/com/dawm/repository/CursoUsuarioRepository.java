@@ -44,4 +44,9 @@ public interface CursoUsuarioRepository extends JpaRepository<CursoUsuario, Long
     @Query(value = "DELETE FROM CURSO_USUARIO cu WHERE cu.ID_CURSO = :idCurso AND cu.ID_USUARIO = :idUsuario", nativeQuery = true)
     void desinscribirse(@Param("idUsuario") Long idUsuario, @Param("idCurso") Long idCurso);
 
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE CURSO_USUARIO cu SET cu.VALORACION = :valoracion WHERE cu.ID_CURSO = :idCurso AND cu.ID_USUARIO = :idUsuario", nativeQuery = true)
+    void valorarCurso(@Param("idUsuario") Long idUsuario, @Param("idCurso") Long idCurso, @Param("valoracion") Integer valoracion);
+
 }

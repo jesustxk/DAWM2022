@@ -89,4 +89,9 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
         }
     }
 
+    @Override
+    public void valorarCurso(Long idUsuario, Long idCurso, Integer valoracion) {
+        this.cursoUsuarioRepository.valorarCurso(idUsuario, idCurso, valoracion);
+    }
+
 }

@@ -28,5 +28,8 @@ public interface CursoController {
     public ModelAndView comenzarCurso(@RequestParam("idCurso") Long idCurso, Model model, HttpSession session);
 
     public ModelAndView completarCurso(@RequestParam("idCurso") Long idCurso, Model model, HttpSession session);
-    
+
+    public ModelAndView valorarCurso(@RequestParam("idCurso") Long idCurso,
+            @RequestParam("valoracion") Integer valoracion, Model model, HttpSession session);
+
 }

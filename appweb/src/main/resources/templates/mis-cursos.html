@@ -56,7 +56,7 @@
             <tbody>
               <tr class="active-row" th:each="cursoPendiente : ${cursosPendientes}">
                 <td th:text="${cursoPendiente.titulo}"></td>
-                <td><a th:href="${cursoPendiente.enlace}" th:text="Enlace"></a></p>
+                <td><a th:href="${cursoPendiente.enlace}" th:text="Enlace" target="_blank"></a></p>
                 </td>
                 <td th:text="${cursoPendiente.descripcion}"></td>
                 <td th:text="${cursoPendiente.valoracion}"></td>
@@ -91,7 +91,7 @@
             <tbody>
               <tr class="active-row" th:each="cursoEnProgreso : ${cursosEnProgreso}">
                 <td th:text="${cursoEnProgreso.titulo}"></td>
-                <td><a th:href="${cursoEnProgreso.enlace}" th:text="Enlace"></a></p>
+                <td><a th:href="${cursoEnProgreso.enlace}" th:text="Enlace" target="_blank"></a></p>
                 </td>
                 <td th:text="${cursoEnProgreso.descripcion}"></td>
                 <td th:text="${cursoEnProgreso.valoracion}"></td>
@@ -126,7 +126,7 @@
             <tbody>
               <tr class="active-row" th:each="cursoCompletado : ${cursosCompletados}">
                 <td th:text="${cursoCompletado.titulo}"></td>
-                <td><a th:href="${cursoCompletado.enlace}" th:text="Enlace"></a></p>
+                <td><a th:href="${cursoCompletado.enlace}" th:text="Enlace" target="_blank"></a></p>
                 </td>
                 <td th:text="${cursoCompletado.descripcion}"></td>
                 <td th:text="${cursoCompletado.valoracion}"></td>
