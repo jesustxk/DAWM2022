@@ -33,8 +33,34 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public List<ListaCurso> getCursosNoMatriculadosNoPropietario(Long idUsuario) {
-        return this.prepararTablaCursos(
-                this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosNoMatriculadosNoPropietario(idUsuario)));
+        List<ListaCurso> tablaCursos = new ArrayList<>();
+        tablaCursos.add(new ListaCurso());
+
+        int cont = 0;
+        int cont2 = 0;
+
+        List<CursoDTO> cursos = this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosNoPropietario(idUsuario));
+
+        for (CursoDTO curso : cursos) {
+            if (cont2 == cursos.size()) {
+                cont2 = 0;
+
+                tablaCursos.add(new ListaCurso());
+                cont++;
+            }
+
+            // Info extra por cada curso
+            this.setInfoExtraCurso(curso);
+
+            // Para bloquear el inscribirse
+            this.isInscrito(curso, idUsuario, curso.getIdCurso());
+
+            tablaCursos.get(cont).addCursoDTO(curso);
+
+            cont2++;
+        }
+
+        return tablaCursos;
     }
 
     @Override
@@ -118,6 +144,7 @@ public class CursoServiceImpl implements CursoService {
         curso.setValoracion(this.cursoUsuarioService.getValoracionByIdCurso(curso.getIdCurso()));
 
         curso.setPersonasInscritas(this.cursoUsuarioService.countMatriculados(curso.getIdCurso()));
+
     }
 
     private List<CursoDTO> prepararListaCursos(List<CursoDTO> cursos) {
@@ -127,6 +154,10 @@ public class CursoServiceImpl implements CursoService {
         }
 
         return cursos;
+    }
+
+    private void isInscrito(CursoDTO curso, Long idUsuario, Long idCurso) {
+        curso.setInscrito(this.cursoUsuarioService.isInscrito(idUsuario, idCurso));
     }
 
 }

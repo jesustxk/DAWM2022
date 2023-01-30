@@ -35,7 +35,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="toprate">
+                    <div class="toprate" th:style="(!${curso.inscrito}) ? 'pointer-events: none'">
                         <input type="radio" th:id="'star5' + ${curso.codigo}" name="rate" value="5" />
                         <label th:for="'star5' + ${curso.codigo}" title="text"
                             th:style="(${curso.valoracion} >= 5) ? 'color: #ffc700' : 'color:#ccc'">5 stars</label>
@@ -53,7 +53,7 @@
                             th:style="(${curso.valoracion} >= 1) ? 'color: #ffc700' : 'color:#ccc'">1 star</label>
                     </div>
                     <form method="POST" th:action="@{/inscribirse(idCurso=${curso.idCurso})}">
-                        <button type="submit">Inscribirse</button>
+                        <button type="submit" th:style="(${curso.inscrito}) ? 'pointer-events: none; background-color:#ccc'">Inscribirse</button>
                     </form>
                 </div>
             </div>

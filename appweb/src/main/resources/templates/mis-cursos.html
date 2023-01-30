@@ -64,7 +64,7 @@
                   <form th:id="'CCP' + ${cursoPendiente.codigo}" hidden method="POST"
                     th:action="@{/comenzarCurso(idCurso=${cursoPendiente.idCurso})}"></form>
                   <form th:id="'BCP' + ${cursoPendiente.codigo}" hidden method="POST"
-                    th:action="@{/borrarCurso(idCurso=${cursoPendiente.idCurso})}"></form>
+                    th:action="@{/desinscribirse(idCurso=${cursoPendiente.idCurso})}"></form>
                   <div class="horizontal-align">
                     <button class="btn-table"
                       th:onclick="document.getElementById([['CCP' + ${cursoPendiente.codigo}]]).submit();">Empezar</button>
@@ -99,7 +99,7 @@
                   <form th:id="'CCE' + ${cursoEnProgreso.codigo}" hidden method="POST"
                     th:action="@{/completarCurso(idCurso=${cursoEnProgreso.idCurso})}"></form>
                   <form th:id="'BCE' + ${cursoEnProgreso.codigo}" hidden method="POST"
-                    th:action="@{/borrarCurso(idCurso=${cursoEnProgreso.idCurso})}"></form>
+                    th:action="@{/desinscribirse(idCurso=${cursoEnProgreso.idCurso})}"></form>
                   <div class="horizontal-align">
                     <button class="btn-table"
                       th:onclick="document.getElementById([['CCE' + ${cursoEnProgreso.codigo}]]).submit();">Completar</button>
@@ -132,7 +132,7 @@
                 <td th:text="${cursoCompletado.valoracion}"></td>
                 <td>
                   <form th:id="${cursoCompletado.codigo}" hidden method="POST"
-                    th:action="@{/borrarCurso(idCurso=${cursoCompletado.idCurso})}"></form>
+                    th:action="@{/desinscribirse(idCurso=${cursoCompletado.idCurso})}"></form>
                   <div class="horizontal-align">
                     <button class="btn-table-eliminar"
                       th:onclick="document.getElementById([[${cursoCompletado.codigo}]]).submit();">Eliminar</button>

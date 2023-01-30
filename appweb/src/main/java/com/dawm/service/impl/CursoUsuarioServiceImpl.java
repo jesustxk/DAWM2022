@@ -46,6 +46,11 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
     }
 
     @Override
+    public void desinscribirse(Long idUsuario, Long idCurso) {
+        this.cursoUsuarioRepository.desinscribirse(idUsuario, idCurso);
+    }
+
+    @Override
     public Integer getValoracionByIdCursoAndIdUsuario(Long idCurso, Long idUsuario) {
         return this.cursoUsuarioRepository.findByIdCursoAndIdUsuario(idCurso, idUsuario).getValoracion();
     }
@@ -73,6 +78,15 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
     @Override
     public void completarCurso(Long idCurso, Long idUsuario) {
         this.cursoUsuarioRepository.completarCurso(idCurso, idUsuario);
+    }
+
+    @Override
+    public Boolean isInscrito(Long idUsuario, Long idCurso) {
+        if (this.cursoUsuarioRepository.isInscrito(idUsuario, idCurso) == 1) {
+            return Boolean.TRUE;
+        } else {
+            return Boolean.FALSE;
+        }
     }
 
 }

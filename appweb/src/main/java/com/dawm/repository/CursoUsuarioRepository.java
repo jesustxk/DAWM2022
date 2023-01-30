@@ -26,6 +26,9 @@ public interface CursoUsuarioRepository extends JpaRepository<CursoUsuario, Long
     @Query(value = "SELECT cu.ID_CURSO_USUARIO FROM CURSO_USUARIO cu WHERE cu.ID_CURSO = :idCurso", nativeQuery = true)
     List<Long> getCursoUsuarioByIdCurso(@Param("idCurso") Long idCurso);
 
+    @Query(value = "SELECT COALESCE(COUNT(cu.ID_CURSO_USUARIO), 0) AS INSCRITO FROM CURSO_USUARIO cu WHERE cu.ID_USUARIO = :idUsuario AND cu.ID_CURSO = :idCurso", nativeQuery = true)
+    Integer isInscrito(@Param("idUsuario")Long idUsuario, @Param("idCurso")Long idCurso);
+
     @Transactional
     @Modifying
     @Query(value = "UPDATE CURSO_USUARIO cu SET cu.INICIADO = TRUE WHERE cu.ID_CURSO = :idCurso AND cu.ID_USUARIO = :idUsuario", nativeQuery = true)
@@ -35,5 +38,10 @@ public interface CursoUsuarioRepository extends JpaRepository<CursoUsuario, Long
     @Modifying
     @Query(value = "UPDATE CURSO_USUARIO cu SET cu.COMPLETADO = TRUE WHERE cu.ID_CURSO = :idCurso AND cu.ID_USUARIO = :idUsuario", nativeQuery = true)
     void completarCurso(@Param("idCurso") Long idCurso, @Param("idUsuario") Long idUsuario);
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM CURSO_USUARIO cu WHERE cu.ID_CURSO = :idCurso AND cu.ID_USUARIO = :idUsuario", nativeQuery = true)
+    void desinscribirse(@Param("idUsuario") Long idUsuario, @Param("idCurso") Long idCurso);
 
 }

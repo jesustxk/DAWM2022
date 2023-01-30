@@ -10,6 +10,8 @@ public interface CursoUsuarioService {
 
     public void inscribirse(Long idUsuario, Long idCurso);
 
+    public void desinscribirse(Long idUsuario, Long idCurso);
+
     public Integer getValoracionByIdCursoAndIdUsuario(Long idCurso, Long idUsuario);
 
     public void deleteFromIdCursoUsuario(Long idCursoUsuario);
@@ -21,5 +23,7 @@ public interface CursoUsuarioService {
     public void comenzarCurso(Long idCurso, Long idUsuario);
 
     public void completarCurso(Long idCurso, Long idUsuario);
+
+    public Boolean isInscrito(Long idUsuario, Long idCurso);
 
 }

@@ -217,6 +217,35 @@ public class CursoControllerImpl implements CursoController {
     }
 
     @Override
+    @PostMapping(path = { "/desinscribirse" })
+    public ModelAndView desinscribirse(@RequestParam("idCurso") Long idCurso, Model model, HttpSession session) {
+
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_MIS_CURSOS);
+
+        try {
+            this.cursoUsuarioService.desinscribirse(((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario(), idCurso);
+        } catch (Exception e) {
+            return new ModelAndView(REDIRECT_MIS_CURSOS);
+        }
+
+        Long idUsuario = ((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario();
+
+        modelAndView.addObject(TABLA_MIS_CURSOS,
+                this.cursoService.getMisCursos(((UsuarioDTO) session.getAttribute(USUARIO))));
+
+        modelAndView.addObject(CURSOS_PENDIENTES,
+                this.cursoService.getCursosPendientes(idUsuario));
+
+        modelAndView.addObject(CURSOS_EN_PROGRESO,
+                this.cursoService.getCursosEnProgreso(idUsuario));
+
+        modelAndView.addObject(CURSOS_COMPLETADOS,
+                this.cursoService.getCursosCompletados(idUsuario));
+
+        return modelAndView;
+    }
+
+    @Override
     @PostMapping(path = { "/comenzarCurso" })
     public ModelAndView comenzarCurso(@RequestParam("idCurso") Long idCurso, Model model, HttpSession session) {
 
