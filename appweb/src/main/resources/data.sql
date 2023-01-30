@@ -27,13 +27,13 @@ INSERT INTO AUTHORITIES (ID_AUTHORITIES, USERNAME, AUTHORITY, FECHA_ALTA) VALUES
 
 -- CURSOS
 
-INSERT INTO CURSO (ID_CURSO, CODIGO, TITULO, DESCRIPCION, ID_USUARIO, FECHA_ALTA) VALUES (1, 'GA000', 'Google Analytics', 'Aprende a utilizar Google Analytics para tu negocio', 1, CURRENT_TIMESTAMP);
+INSERT INTO CURSO (ID_CURSO, CODIGO, TITULO, DESCRIPCION, ID_USUARIO, FECHA_ALTA) VALUES (1, 'GA000', 'Google Analytics', 'Aprende a utilizar Google Analytics para tu negocio', 2, CURRENT_TIMESTAMP);
 
-INSERT INTO CURSO (ID_CURSO, CODIGO, TITULO, DESCRIPCION, ID_USUARIO, FECHA_ALTA) VALUES (2, 'GPE', 'Gestión de proyectos de energía', 'Conceptos, procesos, técnicas y herramientas para la gestión de proyectos de energía', 1, CURRENT_TIMESTAMP);
+INSERT INTO CURSO (ID_CURSO, CODIGO, TITULO, DESCRIPCION, ID_USUARIO, FECHA_ALTA) VALUES (2, 'GPE', 'Gestión de proyectos de energía', 'Conceptos, procesos, técnicas y herramientas para la gestión de proyectos de energía', 2, CURRENT_TIMESTAMP);
 
 INSERT INTO CURSO (ID_CURSO, CODIGO, TITULO, DESCRIPCION, ID_USUARIO, FECHA_ALTA) VALUES (3, 'CUT', 'C# and Unity', 'C# Programming for Unity Game Development', 1, CURRENT_TIMESTAMP);
 
-INSERT INTO CURSO (ID_CURSO, CODIGO, TITULO, DESCRIPCION, ID_USUARIO, FECHA_ALTA) VALUES (4, 'CDEVOPS', 'Continuous Delivery & DevOps', 'When it comes to digital innovation, velocity is critical and many would say it is the most reliable determinant of success', 2, CURRENT_TIMESTAMP);
+INSERT INTO CURSO (ID_CURSO, CODIGO, TITULO, DESCRIPCION, ID_USUARIO, FECHA_ALTA) VALUES (4, 'CDEVOPS', 'Continuous Delivery & DevOps', 'When it comes to digital innovation, velocity is critical and many would say it is the most reliable determinant of success', 1, CURRENT_TIMESTAMP);
 
 INSERT INTO CURSO (ID_CURSO, CODIGO, TITULO, DESCRIPCION, ID_USUARIO, FECHA_ALTA) VALUES (5, 'PYDATSCI', 'Python for Data Science', 'Kickstart your learning of Python with this beginner-friendly self-paced course taught by an expert', 2, CURRENT_TIMESTAMP);
 

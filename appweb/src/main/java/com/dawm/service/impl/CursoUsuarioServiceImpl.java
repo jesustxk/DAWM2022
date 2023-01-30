@@ -37,6 +37,8 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
         cursoUsuario.setIdCurso(idCurso);
         cursoUsuario.setIdUsuario(idUsuario);
         cursoUsuario.setFechaAlta(new Date(System.currentTimeMillis()));
+        cursoUsuario.setIniciado(false);
+        cursoUsuario.setCompletado(false);
 
         if (this.cursoUsuarioRepository.findByIdCursoAndIdUsuario(idCurso, idUsuario) == null) {
             this.cursoUsuarioRepository.save(this.cursoUsuarioMapper.asCursoUsuario(cursoUsuario));
