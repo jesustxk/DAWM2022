@@ -23,7 +23,7 @@
                     <div class="icons-card">
                         <form th:id="${curso.codigo}" hidden method="POST"
                             th:action="@{/borrarCurso(idCurso=${curso.idCurso})}"></form>
-                        <div>
+                        <div hidden>
                             <i class="fa fa-pen-to-square fa-lg"></i>
                         </div>
                         <a th:onclick="document.getElementById([[${curso.codigo}]]).submit();">
