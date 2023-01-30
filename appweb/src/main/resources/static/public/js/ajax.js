@@ -14,6 +14,7 @@ function addCurso() {
         data: cursoPrueba,
         cache: false,
         success: function() {
+            window.location.reload();
         }
     });
 }
@@ -36,6 +37,7 @@ function updatePerfil() {
         data: usuario,
         cache: false,
         success: function() {
+            window.location.reload();
         }
     });
 }

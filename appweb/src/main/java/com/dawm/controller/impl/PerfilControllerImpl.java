@@ -51,7 +51,7 @@ public class PerfilControllerImpl implements PerfilController {
     @PostMapping(path = {"/updatePerfil"})
     public ModelAndView updatePerfil(@ModelAttribute("usuario") UsuarioDTO usuario, Model model, HttpSession session) {
 
-        ModelAndView modelAndView = new ModelAndView(PERFIL);
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_PERFIL);
 
         session.setAttribute(USUARIO, this.usuarioService.updateUsuario(usuario));
         modelAndView.addObject(USUARIO, session.getAttribute(USUARIO));

@@ -45,11 +45,12 @@ public class CursoControllerImpl implements CursoController {
 
     @Override
     @GetMapping(path = { "/cursos" })
-    public ModelAndView getCursos(@RequestParam("idUsuario") Long idUsuario, Model model, HttpSession session) {
+    public ModelAndView getCursos(Model model, HttpSession session) {
 
         ModelAndView modelAndView = new ModelAndView(CURSOS);
 
-        modelAndView.addObject(TABLA_CURSOS, this.cursoService.getCursosNoMatriculadosNoPropietario(idUsuario));
+        modelAndView.addObject(TABLA_CURSOS, this.cursoService
+                .getCursosNoMatriculadosNoPropietario(((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario()));
         modelAndView.addObject("curso", new CursoDTO());
         modelAndView.addObject("imagen", "");
 
@@ -64,20 +65,20 @@ public class CursoControllerImpl implements CursoController {
     }
 
     @Override
-    @GetMapping(path = {"/mis-cursos"})
+    @GetMapping(path = { "/mis-cursos" })
     public ModelAndView getMisCursos(Model model, HttpSession session) {
 
         ModelAndView modelAndView = new ModelAndView(MIS_CURSOS);
 
         // Usuario a la sesión
         if (session.getAttribute(USUARIO) == null) {
-            session.setAttribute(USUARIO, 
-                this.usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
+            session.setAttribute(USUARIO,
+                    this.usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
         }
         modelAndView.addObject(USUARIO, session.getAttribute(USUARIO));
 
-        modelAndView.addObject("tablaMisCursos", 
-            this.cursoService.getMisCursos(((UsuarioDTO) session.getAttribute(USUARIO))));
+        modelAndView.addObject("tablaMisCursos",
+                this.cursoService.getMisCursos(((UsuarioDTO) session.getAttribute(USUARIO))));
 
         return modelAndView;
     }
@@ -99,6 +100,12 @@ public class CursoControllerImpl implements CursoController {
         modelAndView.addObject(TABLA_CURSOS, this.cursoService
                 .getCursosNoMatriculadosNoPropietario(((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario()));
         modelAndView.addObject("curso", new CursoDTO());
+
+        // Usuario a la sesión
+        if (session.getAttribute(USUARIO) == null) {
+            session.setAttribute(USUARIO,
+                    this.usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
+        }
 
         return modelAndView;
     }
