@@ -38,9 +38,21 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public List<ListaCurso> getCursosMatriculados(Long idUsuario) {
+    public List<ListaCurso> getCursosPendientes(Long idUsuario) {
         return this.prepararTablaCursos(
-                this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosMatriculados(idUsuario)));
+                this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosPendientes(idUsuario)));
+    }
+
+    @Override
+    public List<ListaCurso> getCursosEnProgreso(Long idUsuario) {
+        return this.prepararTablaCursos(
+                this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosEnProgreso(idUsuario)));
+    }
+
+    @Override
+    public List<ListaCurso> getCursosCompletados(Long idUsuario) {
+        return this.prepararTablaCursos(
+                this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosCompletados(idUsuario)));
     }
 
     @Override

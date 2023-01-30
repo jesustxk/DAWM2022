@@ -77,8 +77,19 @@ public class CursoControllerImpl implements CursoController {
         }
         modelAndView.addObject(USUARIO, session.getAttribute(USUARIO));
 
+        Long idUsuario = ((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario();
+
         modelAndView.addObject("tablaMisCursos",
                 this.cursoService.getMisCursos(((UsuarioDTO) session.getAttribute(USUARIO))));
+
+        modelAndView.addObject("tablaCursosPendientes",
+                this.cursoService.getCursosPendientes(idUsuario));
+
+        modelAndView.addObject("tablaCursosEnProgreso",
+                this.cursoService.getCursosEnProgreso(idUsuario));
+
+        modelAndView.addObject("tablaCursosCompletados",
+                this.cursoService.getCursosCompletados(idUsuario));
 
         return modelAndView;
     }
@@ -122,8 +133,19 @@ public class CursoControllerImpl implements CursoController {
             return new ModelAndView(REDIRECT_MIS_CURSOS);
         }
 
-        modelAndView.addObject(TABLA_CURSOS,
-                this.cursoService.getCursosMatriculados(((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario()));
+        Long idUsuario = ((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario();
+
+        modelAndView.addObject("tablaMisCursos",
+                this.cursoService.getMisCursos(((UsuarioDTO) session.getAttribute(USUARIO))));
+
+        modelAndView.addObject("tablaCursosPendientes",
+                this.cursoService.getCursosPendientes(idUsuario));
+
+        modelAndView.addObject("tablaCursosEnProgreso",
+                this.cursoService.getCursosEnProgreso(idUsuario));
+
+        modelAndView.addObject("tablaCursosCompletados",
+                this.cursoService.getCursosCompletados(idUsuario));
 
         return modelAndView;
     }
@@ -140,8 +162,19 @@ public class CursoControllerImpl implements CursoController {
             return new ModelAndView(REDIRECT_MIS_CURSOS);
         }
 
-        modelAndView.addObject(TABLA_CURSOS,
-                this.cursoService.getCursosMatriculados(((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario()));
+        Long idUsuario = ((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario();
+
+        modelAndView.addObject("tablaMisCursos",
+                this.cursoService.getMisCursos(((UsuarioDTO) session.getAttribute(USUARIO))));
+
+        modelAndView.addObject("tablaCursosPendientes",
+                this.cursoService.getCursosPendientes(idUsuario));
+
+        modelAndView.addObject("tablaCursosEnProgreso",
+                this.cursoService.getCursosEnProgreso(idUsuario));
+
+        modelAndView.addObject("tablaCursosCompletados",
+                this.cursoService.getCursosCompletados(idUsuario));
 
         return modelAndView;
     }
@@ -155,11 +188,22 @@ public class CursoControllerImpl implements CursoController {
         try {
             this.cursoUsuarioService.inscribirse(((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario(), idCurso);
         } catch (Exception e) {
-            return new ModelAndView(REDIRECT_CURSOS);
+            return new ModelAndView(REDIRECT_MIS_CURSOS);
         }
 
-        modelAndView.addObject(TABLA_CURSOS,
-                this.cursoService.getCursosMatriculados(((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario()));
+        Long idUsuario = ((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario();
+
+        modelAndView.addObject("tablaMisCursos",
+                this.cursoService.getMisCursos(((UsuarioDTO) session.getAttribute(USUARIO))));
+
+        modelAndView.addObject("tablaCursosPendientes",
+                this.cursoService.getCursosPendientes(idUsuario));
+
+        modelAndView.addObject("tablaCursosEnProgreso",
+                this.cursoService.getCursosEnProgreso(idUsuario));
+
+        modelAndView.addObject("tablaCursosCompletados",
+                this.cursoService.getCursosCompletados(idUsuario));
 
         return modelAndView;
     }
