@@ -37,6 +37,8 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
         cursoUsuario.setIdCurso(idCurso);
         cursoUsuario.setIdUsuario(idUsuario);
         cursoUsuario.setFechaAlta(new Date(System.currentTimeMillis()));
+        cursoUsuario.setIniciado(false);
+        cursoUsuario.setCompletado(false);
 
         if (this.cursoUsuarioRepository.findByIdCursoAndIdUsuario(idCurso, idUsuario) == null) {
             this.cursoUsuarioRepository.save(this.cursoUsuarioMapper.asCursoUsuario(cursoUsuario));
@@ -61,6 +63,16 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
     @Override
     public List<Long> getCursoUsuarioByIdCurso(Long idCurso) {
         return this.cursoUsuarioRepository.getCursoUsuarioByIdCurso(idCurso);
+    }
+
+    @Override
+    public void comenzarCurso(Long idCurso, Long idUsuario) {
+        this.cursoUsuarioRepository.comenzarCurso(idCurso, idUsuario);
+    }
+
+    @Override
+    public void completarCurso(Long idCurso, Long idUsuario) {
+        this.cursoUsuarioRepository.completarCurso(idCurso, idUsuario);
     }
 
 }

@@ -3,14 +3,15 @@
 
 <head>
   <title>Mis cursos</title>
-  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+
   <link type="text/css" th:href="@{/public/css/style.css}" rel="stylesheet" />
   <link type="text/css" th:href="@{/public/css/styles.css}" rel="stylesheet" />
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -53,33 +54,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="active-row">
-                <td>Java</td>
-                <td><a
-                    href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas">
-                    Enlace {nombre curso}</a></p>
+              <tr class="active-row" th:each="cursoPendiente : ${cursosPendientes}">
+                <td th:text="${cursoPendiente.titulo}"></td>
+                <td><a th:href="${cursoPendiente.enlace}" th:text="Enlace"></a></p>
                 </td>
-                <td>El mejor curso de Java que puedes encontrar</td>
-                <td>5</td>
+                <td th:text="${cursoPendiente.descripcion}"></td>
+                <td th:text="${cursoPendiente.valoracion}"></td>
                 <td>
+                  <form th:id="'CCP' + ${cursoPendiente.codigo}" hidden method="POST"
+                    th:action="@{/comenzarCurso(idCurso=${cursoPendiente.idCurso})}"></form>
+                  <form th:id="'BCP' + ${cursoPendiente.codigo}" hidden method="POST"
+                    th:action="@{/borrarCurso(idCurso=${cursoPendiente.idCurso})}"></form>
                   <div class="horizontal-align">
-                    <button class="btn-table">Empezar</button>
-                    <button class="btn-table-eliminar">Eliminar</button>
-                  </div>
-                </td>
-              </tr>
-              <tr class="active-row">
-                <td>Java</td>
-                <td><a
-                    href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas">
-                    Enlace {nombre curso}</a></p>
-                </td>
-                <td>El mejor curso de Java que puedes encontrar</td>
-                <td>5</td>
-                <td>
-                  <div class="horizontal-align">
-                    <button class="btn-table">Empezar</button>
-                    <button class="btn-table-eliminar">Eliminar</button>
+                    <button class="btn-table"
+                      th:onclick="document.getElementById([['CCP' + ${cursoPendiente.codigo}]]).submit();">Empezar</button>
+                    <button class="btn-table-eliminar"
+                      th:onclick="document.getElementById([['BCP' + ${cursoPendiente.codigo}]]).submit();">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -99,33 +89,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="active-row">
-                <td>Java</td>
-                <td><a
-                    href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas">
-                    Enlace {nombre curso}</a></p>
+              <tr class="active-row" th:each="cursoEnProgreso : ${cursosEnProgreso}">
+                <td th:text="${cursoEnProgreso.titulo}"></td>
+                <td><a th:href="${cursoEnProgreso.enlace}" th:text="Enlace"></a></p>
                 </td>
-                <td>El mejor curso de Java que puedes encontrar</td>
-                <td>5</td>
+                <td th:text="${cursoEnProgreso.descripcion}"></td>
+                <td th:text="${cursoEnProgreso.valoracion}"></td>
                 <td>
+                  <form th:id="'CCE' + ${cursoEnProgreso.codigo}" hidden method="POST"
+                    th:action="@{/completarCurso(idCurso=${cursoEnProgreso.idCurso})}"></form>
+                  <form th:id="'BCE' + ${cursoEnProgreso.codigo}" hidden method="POST"
+                    th:action="@{/borrarCurso(idCurso=${cursoEnProgreso.idCurso})}"></form>
                   <div class="horizontal-align">
-                    <button class="btn-table">Completar</button>
-                    <button class="btn-table-eliminar">Eliminar</button>
-                  </div>
-                </td>
-              </tr>
-              <tr class="active-row">
-                <td>Java</td>
-                <td><a
-                    href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas">
-                    Enlace {nombre curso}</a></p>
-                </td>
-                <td>El mejor curso de Java que puedes encontrar</td>
-                <td>5</td>
-                <td>
-                  <div class="horizontal-align">
-                    <button class="btn-table">Completar</button>
-                    <button class="btn-table-eliminar">Eliminar</button>
+                    <button class="btn-table"
+                      th:onclick="document.getElementById([['CCE' + ${cursoEnProgreso.codigo}]]).submit();">Completar</button>
+                    <button class="btn-table-eliminar"
+                      th:onclick="document.getElementById([['BCE' + ${cursoEnProgreso.codigo}]]).submit();">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -145,31 +124,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="active-row">
-                <td>Java</td>
-                <td><a
-                    href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas">
-                    Enlace {nombre curso}</a></p>
+              <tr class="active-row" th:each="cursoCompletado : ${cursosCompletados}">
+                <td th:text="${cursoCompletado.titulo}"></td>
+                <td><a th:href="${cursoCompletado.enlace}" th:text="Enlace"></a></p>
                 </td>
-                <td>El mejor curso de Java que puedes encontrar</td>
-                <td>5</td>
+                <td th:text="${cursoCompletado.descripcion}"></td>
+                <td th:text="${cursoCompletado.valoracion}"></td>
                 <td>
+                  <form th:id="${cursoCompletado.codigo}" hidden method="POST"
+                    th:action="@{/borrarCurso(idCurso=${cursoCompletado.idCurso})}"></form>
                   <div class="horizontal-align">
-                    <button class="btn-table-eliminar">Eliminar</button>
-                  </div>
-                </td>
-              </tr>
-              <tr class="active-row">
-                <td>Java</td>
-                <td><a
-                    href="https://www.youtube.com/watch?v=U709qY6S9rA&list=PLU8oAlHdN5BktAXdEVCLUYzvDyqRQJ2lk&ab_channel=pildorasinformaticas">
-                    Enlace {nombre curso}</a></p>
-                </td>
-                <td>El mejor curso de Java que puedes encontrar</td>
-                <td>5</td>
-                <td>
-                  <div class="horizontal-align">
-                    <button class="btn-table-eliminar">Eliminar</button>
+                    <button class="btn-table-eliminar"
+                      th:onclick="document.getElementById([[${cursoCompletado.codigo}]]).submit();">Eliminar</button>
                   </div>
                 </td>
               </tr>

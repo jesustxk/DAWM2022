@@ -26,4 +26,10 @@ public class UsuarioDTO implements Serializable {
     
 	private Date fechaAlta;
 
+    private String password4;
+
+    private String password5;
+
+    private String password6;
+
 }

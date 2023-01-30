@@ -10,7 +10,11 @@ public interface CursoService {
 
     public List<ListaCurso> getCursosNoMatriculadosNoPropietario(Long idUsuario);
 
-    public List<ListaCurso> getCursosMatriculados(Long idUsuario);
+    public List<CursoDTO> getCursosPendientes(Long idUsuario);
+
+    public List<CursoDTO> getCursosEnProgreso(Long idUsuario);
+
+    public List<CursoDTO> getCursosCompletados(Long idUsuario);
 
     public List<ListaCurso> getMisCursos(UsuarioDTO usuarioDTO);
 

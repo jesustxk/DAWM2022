@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,7 +21,8 @@ public class CursoUsuario {
     
     @Id
     @Column(name = "ID_CURSO_USUARIO")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_curso_usuario")
+    @SequenceGenerator(name = "seq_curso_usuario", sequenceName = "seq_curso_usuario", allocationSize = 1)
     private Long idCursoUsuario;
 
     @Column(name = "ID_CURSO", nullable = false)

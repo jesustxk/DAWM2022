@@ -48,13 +48,8 @@ public class PerfilControllerImpl implements PerfilController {
     public ModelAndView updatePerfil(@ModelAttribute("usuario") UsuarioDTO usuario, Model model, HttpSession session) {
 
         ModelAndView modelAndView = new ModelAndView(REDIRECT_PERFIL);
-        this.usuarioService.updateUsuario(usuario);
 
-        // Usuario a la sesión
-        if (session.getAttribute(USUARIO) == null) {
-            session.setAttribute(USUARIO,
-                    this.usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
-        }
+        session.setAttribute(USUARIO, this.usuarioService.updateUsuario(usuario));
         modelAndView.addObject(USUARIO, session.getAttribute(USUARIO));
 
         return modelAndView;

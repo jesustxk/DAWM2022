@@ -11,7 +11,7 @@ import com.dawm.model.dto.CursoDTO;
 
 public interface CursoController {
 
-    public ModelAndView getCursos(@RequestParam("idUsuario") Long idUsuario, Model model, HttpSession session);
+    public ModelAndView getCursos(Model model, HttpSession session);
 
     public ModelAndView getMisCursos(Model model, HttpSession session);
 
@@ -22,5 +22,9 @@ public interface CursoController {
     public ModelAndView editarCurso(@ModelAttribute("curso") CursoDTO curso, Model model, HttpSession session);
 
     public ModelAndView inscribirse(@RequestParam("idCurso") Long idCurso, Model model, HttpSession session);
+
+    public ModelAndView comenzarCurso(@RequestParam("idCurso") Long idCurso, Model model, HttpSession session);
+
+    public ModelAndView completarCurso(@RequestParam("idCurso") Long idCurso, Model model, HttpSession session);
     
 }

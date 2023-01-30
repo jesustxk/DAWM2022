@@ -38,9 +38,21 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public List<ListaCurso> getCursosMatriculados(Long idUsuario) {
-        return this.prepararTablaCursos(
-                this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosMatriculados(idUsuario)));
+    public List<CursoDTO> getCursosPendientes(Long idUsuario) {
+        return this.prepararListaCursos(
+                this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosPendientes(idUsuario)));
+    }
+
+    @Override
+    public List<CursoDTO> getCursosEnProgreso(Long idUsuario) {
+        return this.prepararListaCursos(
+                this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosEnProgreso(idUsuario)));
+    }
+
+    @Override
+    public List<CursoDTO> getCursosCompletados(Long idUsuario) {
+        return this.prepararListaCursos(
+                this.cursoMapper.asCursoDTOList(this.cursoRepository.getCursosCompletados(idUsuario)));
     }
 
     @Override
@@ -106,6 +118,15 @@ public class CursoServiceImpl implements CursoService {
         curso.setValoracion(this.cursoUsuarioService.getValoracionByIdCurso(curso.getIdCurso()));
 
         curso.setPersonasInscritas(this.cursoUsuarioService.countMatriculados(curso.getIdCurso()));
+    }
+
+    private List<CursoDTO> prepararListaCursos(List<CursoDTO> cursos) {
+        for (CursoDTO curso : cursos) {
+            // Info extra por cada curso
+            this.setInfoExtraCurso(curso);
+        }
+
+        return cursos;
     }
 
 }

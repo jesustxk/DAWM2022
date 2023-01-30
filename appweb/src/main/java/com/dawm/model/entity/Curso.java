@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,7 +27,8 @@ public class Curso implements Serializable {
     
     @Id
     @Column(name = "ID_CURSO")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_curso")
+    @SequenceGenerator(name = "seq_curso", sequenceName = "seq_curso", allocationSize = 1)
     private Long idCurso;
 
     @Column(name = "CODIGO", nullable = false, unique = true)
