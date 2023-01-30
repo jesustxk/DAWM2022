@@ -65,4 +65,14 @@ public class CursoUsuarioServiceImpl implements CursoUsuarioService {
         return this.cursoUsuarioRepository.getCursoUsuarioByIdCurso(idCurso);
     }
 
+    @Override
+    public void comenzarCurso(Long idCurso, Long idUsuario) {
+        this.cursoUsuarioRepository.comenzarCurso(idCurso, idUsuario);
+    }
+
+    @Override
+    public void completarCurso(Long idCurso, Long idUsuario) {
+        this.cursoUsuarioRepository.completarCurso(idCurso, idUsuario);
+    }
+
 }

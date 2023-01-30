@@ -216,4 +216,68 @@ public class CursoControllerImpl implements CursoController {
         return modelAndView;
     }
 
+    @Override
+    @PostMapping(path = { "/comenzarCurso" })
+    public ModelAndView comenzarCurso(@RequestParam("idCurso") Long idCurso, Model model, HttpSession session) {
+
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_MIS_CURSOS);
+
+        // Usuario a la sesión
+        if (session.getAttribute(USUARIO) == null) {
+            session.setAttribute(USUARIO,
+                    this.usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
+        }
+        modelAndView.addObject(USUARIO, session.getAttribute(USUARIO));
+
+        Long idUsuario = ((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario();
+
+        this.cursoUsuarioService.comenzarCurso(idCurso, idUsuario);
+
+        modelAndView.addObject(TABLA_MIS_CURSOS,
+                this.cursoService.getMisCursos(((UsuarioDTO) session.getAttribute(USUARIO))));
+
+        modelAndView.addObject(CURSOS_PENDIENTES,
+                this.cursoService.getCursosPendientes(idUsuario));
+
+        modelAndView.addObject(CURSOS_EN_PROGRESO,
+                this.cursoService.getCursosEnProgreso(idUsuario));
+
+        modelAndView.addObject(CURSOS_COMPLETADOS,
+                this.cursoService.getCursosCompletados(idUsuario));
+
+        return modelAndView;
+    }
+
+    @Override
+    @PostMapping(path = { "/completarCurso" })
+    public ModelAndView completarCurso(@RequestParam("idCurso") Long idCurso, Model model, HttpSession session) {
+
+        ModelAndView modelAndView = new ModelAndView(REDIRECT_MIS_CURSOS);
+
+        // Usuario a la sesión
+        if (session.getAttribute(USUARIO) == null) {
+            session.setAttribute(USUARIO,
+                    this.usuarioService.getUsuario(SecurityContextHolder.getContext().getAuthentication().getName()));
+        }
+        modelAndView.addObject(USUARIO, session.getAttribute(USUARIO));
+
+        Long idUsuario = ((UsuarioDTO) session.getAttribute(USUARIO)).getIdUsuario();
+
+        this.cursoUsuarioService.completarCurso(idCurso, idUsuario);
+
+        modelAndView.addObject(TABLA_MIS_CURSOS,
+                this.cursoService.getMisCursos(((UsuarioDTO) session.getAttribute(USUARIO))));
+
+        modelAndView.addObject(CURSOS_PENDIENTES,
+                this.cursoService.getCursosPendientes(idUsuario));
+
+        modelAndView.addObject(CURSOS_EN_PROGRESO,
+                this.cursoService.getCursosEnProgreso(idUsuario));
+
+        modelAndView.addObject(CURSOS_COMPLETADOS,
+                this.cursoService.getCursosCompletados(idUsuario));
+
+        return modelAndView;
+    }
+
 }

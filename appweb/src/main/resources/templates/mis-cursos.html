@@ -10,7 +10,7 @@
   <link type="text/css" th:href="@{/public/css/styles.css}" rel="stylesheet" />
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-  
+
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 </head>
 
@@ -61,8 +61,11 @@
                 <td th:text="${cursoPendiente.descripcion}"></td>
                 <td th:text="${cursoPendiente.valoracion}"></td>
                 <td>
+                  <form th:id="${cursoPendiente.codigo}" hidden method="POST"
+                    th:action="@{/comenzarCurso(idCurso=${cursoPendiente.idCurso})}"></form>
                   <div class="horizontal-align">
-                    <button class="btn-table">Empezar</button>
+                    <button class="btn-table"
+                      th:onclick="document.getElementById([[${cursoPendiente.codigo}]]).submit();">Empezar</button>
                     <button class="btn-table-eliminar">Eliminar</button>
                   </div>
                 </td>
@@ -83,15 +86,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="active-ro" th:each="cursoEnProgreso : ${cursosEnProgreso}">
+              <tr class="active-row" th:each="cursoEnProgreso : ${cursosEnProgreso}">
                 <td th:text="${cursoEnProgreso.titulo}"></td>
                 <td><a th:href="${cursoEnProgreso.enlace}" th:text="${cursoEnProgreso.enlace}"></a></p>
                 </td>
                 <td th:text="${cursoEnProgreso.descripcion}"></td>
                 <td th:text="${cursoEnProgreso.valoracion}"></td>
                 <td>
+                  <form th:id="${cursoEnProgreso.codigo}" hidden method="POST"
+                    th:action="@{/completarCurso(idCurso=${cursoEnProgreso.idCurso})}"></form>
                   <div class="horizontal-align">
-                    <button class="btn-table">Completar</button>
+                    <button class="btn-table"
+                      th:onclick="document.getElementById([[${cursoEnProgreso.codigo}]]).submit();">Completar</button>
                     <button class="btn-table-eliminar">Eliminar</button>
                   </div>
                 </td>

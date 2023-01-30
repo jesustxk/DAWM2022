@@ -18,4 +18,8 @@ public interface CursoUsuarioService {
 
     public List<Long> getCursoUsuarioByIdCurso(Long idCurso);
 
+    public void comenzarCurso(Long idCurso, Long idUsuario);
+
+    public void completarCurso(Long idCurso, Long idUsuario);
+
 }
