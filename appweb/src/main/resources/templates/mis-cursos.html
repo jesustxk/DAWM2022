@@ -55,11 +55,11 @@
             </thead>
             <tbody>
               <tr class="active-row" th:each="cursoPendiente : ${cursosPendientes}">
-                <td th:field="*{titulo}"></td>
-                <td><a th:href="*{enlace}" th:field="*{enlace}"></a></p>
+                <td th:text="${cursoPendiente.titulo}"></td>
+                <td><a th:href="${enlace}" th:text="${cursoPendiente.enlace}"></a></p>
                 </td>
-                <td th:field="*{descripcion}"></td>
-                <td th:field="*{valoracion}"></td>
+                <td th:text="${cursoPendiente.descripcion}"></td>
+                <td th:text="${cursoPendiente.valoracion}"></td>
                 <td>
                   <div class="horizontal-align">
                     <button class="btn-table">Empezar</button>
@@ -84,11 +84,11 @@
             </thead>
             <tbody>
               <tr class="active-ro" th:each="cursoEnProgreso : ${cursosEnProgreso}">
-                <td th:field="*{titulo}"></td>
-                <td><a th:href="*{enlace}" th:field="*{enlace}"></a></p>
+                <td th:text="${cursoEnProgreso.titulo}"></td>
+                <td><a th:href="${cursoEnProgreso.enlace}" th:text="${cursoEnProgreso.enlace}"></a></p>
                 </td>
-                <td th:field="*{descripcion}"></td>
-                <td th:field="*{valoracion}"></td>
+                <td th:text="${cursoEnProgreso.descripcion}"></td>
+                <td th:text="${cursoEnProgreso.valoracion}"></td>
                 <td>
                   <div class="horizontal-align">
                     <button class="btn-table">Completar</button>
@@ -113,11 +113,11 @@
             </thead>
             <tbody>
               <tr class="active-row" th:each="cursoCompletado : ${cursosCompletados}">
-                <td th:field="*{titulo}"></td>
-                <td><a th:href="*{enlace}" th:field="*{enlace}"></a></p>
+                <td th:text="${cursoCompletado.titulo}"></td>
+                <td><a th:href="${cursoCompletado.enlace}" th:text="${cursoCompletado.enlace}"></a></p>
                 </td>
-                <td th:field="*{descripcion}"></td>
-                <td th:field="*{valoracion}"></td>
+                <td th:text="${cursoCompletado.descripcion}"></td>
+                <td th:text="${cursoCompletado.valoracion}"></td>
                 <td>
                   <div class="horizontal-align">
                     <button class="btn-table-eliminar">Eliminar</button>
