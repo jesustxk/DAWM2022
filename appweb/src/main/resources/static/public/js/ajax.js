@@ -42,6 +42,23 @@ function updatePerfil() {
     });
 }
 
+function valoracion(valoracion) {
+
+    var usuario = { valoracion : valoracion.substring(4, 5),
+        idCurso : valoracion.substring(6, valoracion.length),
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: '/valorarCurso',
+        data: usuario,
+        cache: false,
+        success: function() {
+            window.location.reload();
+        }
+    });
+}
+
 $(document).ready( function () {
     
 } );

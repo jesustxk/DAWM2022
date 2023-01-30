@@ -56,7 +56,7 @@
             <tbody>
               <tr class="active-row" th:each="cursoPendiente : ${cursosPendientes}">
                 <td th:text="${cursoPendiente.titulo}"></td>
-                <td><a th:href="${cursoPendiente.enlace}" th:text="Enlace"></a></p>
+                <td><a th:href="${cursoPendiente.enlace}" th:text="Enlace" target="_blank"></a></p>
                 </td>
                 <td th:text="${cursoPendiente.descripcion}"></td>
                 <td th:text="${cursoPendiente.valoracion}"></td>
@@ -64,7 +64,7 @@
                   <form th:id="'CCP' + ${cursoPendiente.codigo}" hidden method="POST"
                     th:action="@{/comenzarCurso(idCurso=${cursoPendiente.idCurso})}"></form>
                   <form th:id="'BCP' + ${cursoPendiente.codigo}" hidden method="POST"
-                    th:action="@{/borrarCurso(idCurso=${cursoPendiente.idCurso})}"></form>
+                    th:action="@{/desinscribirse(idCurso=${cursoPendiente.idCurso})}"></form>
                   <div class="horizontal-align">
                     <button class="btn-table"
                       th:onclick="document.getElementById([['CCP' + ${cursoPendiente.codigo}]]).submit();">Empezar</button>
@@ -91,7 +91,7 @@
             <tbody>
               <tr class="active-row" th:each="cursoEnProgreso : ${cursosEnProgreso}">
                 <td th:text="${cursoEnProgreso.titulo}"></td>
-                <td><a th:href="${cursoEnProgreso.enlace}" th:text="Enlace"></a></p>
+                <td><a th:href="${cursoEnProgreso.enlace}" th:text="Enlace" target="_blank"></a></p>
                 </td>
                 <td th:text="${cursoEnProgreso.descripcion}"></td>
                 <td th:text="${cursoEnProgreso.valoracion}"></td>
@@ -99,7 +99,7 @@
                   <form th:id="'CCE' + ${cursoEnProgreso.codigo}" hidden method="POST"
                     th:action="@{/completarCurso(idCurso=${cursoEnProgreso.idCurso})}"></form>
                   <form th:id="'BCE' + ${cursoEnProgreso.codigo}" hidden method="POST"
-                    th:action="@{/borrarCurso(idCurso=${cursoEnProgreso.idCurso})}"></form>
+                    th:action="@{/desinscribirse(idCurso=${cursoEnProgreso.idCurso})}"></form>
                   <div class="horizontal-align">
                     <button class="btn-table"
                       th:onclick="document.getElementById([['CCE' + ${cursoEnProgreso.codigo}]]).submit();">Completar</button>
@@ -126,13 +126,13 @@
             <tbody>
               <tr class="active-row" th:each="cursoCompletado : ${cursosCompletados}">
                 <td th:text="${cursoCompletado.titulo}"></td>
-                <td><a th:href="${cursoCompletado.enlace}" th:text="Enlace"></a></p>
+                <td><a th:href="${cursoCompletado.enlace}" th:text="Enlace" target="_blank"></a></p>
                 </td>
                 <td th:text="${cursoCompletado.descripcion}"></td>
                 <td th:text="${cursoCompletado.valoracion}"></td>
                 <td>
                   <form th:id="${cursoCompletado.codigo}" hidden method="POST"
-                    th:action="@{/borrarCurso(idCurso=${cursoCompletado.idCurso})}"></form>
+                    th:action="@{/desinscribirse(idCurso=${cursoCompletado.idCurso})}"></form>
                   <div class="horizontal-align">
                     <button class="btn-table-eliminar"
                       th:onclick="document.getElementById([[${cursoCompletado.codigo}]]).submit();">Eliminar</button>

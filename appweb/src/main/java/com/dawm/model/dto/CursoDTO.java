@@ -28,6 +28,6 @@ public class CursoDTO implements Serializable {
 
     private Integer valoracion;
 
-    private Integer inscrito;
+    private Boolean inscrito;
     
 }
