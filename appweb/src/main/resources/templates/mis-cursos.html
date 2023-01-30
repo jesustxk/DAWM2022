@@ -56,17 +56,20 @@
             <tbody>
               <tr class="active-row" th:each="cursoPendiente : ${cursosPendientes}">
                 <td th:text="${cursoPendiente.titulo}"></td>
-                <td><a th:href="${enlace}" th:text="${cursoPendiente.enlace}"></a></p>
+                <td><a th:href="${cursoPendiente.enlace}" th:text="Enlace"></a></p>
                 </td>
                 <td th:text="${cursoPendiente.descripcion}"></td>
                 <td th:text="${cursoPendiente.valoracion}"></td>
                 <td>
-                  <form th:id="${cursoPendiente.codigo}" hidden method="POST"
+                  <form th:id="'CCP' + ${cursoPendiente.codigo}" hidden method="POST"
                     th:action="@{/comenzarCurso(idCurso=${cursoPendiente.idCurso})}"></form>
+                  <form th:id="'BCP' + ${cursoPendiente.codigo}" hidden method="POST"
+                    th:action="@{/borrarCurso(idCurso=${cursoPendiente.idCurso})}"></form>
                   <div class="horizontal-align">
                     <button class="btn-table"
-                      th:onclick="document.getElementById([[${cursoPendiente.codigo}]]).submit();">Empezar</button>
-                    <button class="btn-table-eliminar">Eliminar</button>
+                      th:onclick="document.getElementById([['CCP' + ${cursoPendiente.codigo}]]).submit();">Empezar</button>
+                    <button class="btn-table-eliminar"
+                      th:onclick="document.getElementById([['BCP' + ${cursoPendiente.codigo}]]).submit();">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -88,17 +91,20 @@
             <tbody>
               <tr class="active-row" th:each="cursoEnProgreso : ${cursosEnProgreso}">
                 <td th:text="${cursoEnProgreso.titulo}"></td>
-                <td><a th:href="${cursoEnProgreso.enlace}" th:text="${cursoEnProgreso.enlace}"></a></p>
+                <td><a th:href="${cursoEnProgreso.enlace}" th:text="Enlace"></a></p>
                 </td>
                 <td th:text="${cursoEnProgreso.descripcion}"></td>
                 <td th:text="${cursoEnProgreso.valoracion}"></td>
                 <td>
-                  <form th:id="${cursoEnProgreso.codigo}" hidden method="POST"
+                  <form th:id="'CCE' + ${cursoEnProgreso.codigo}" hidden method="POST"
                     th:action="@{/completarCurso(idCurso=${cursoEnProgreso.idCurso})}"></form>
+                  <form th:id="'BCE' + ${cursoEnProgreso.codigo}" hidden method="POST"
+                    th:action="@{/borrarCurso(idCurso=${cursoEnProgreso.idCurso})}"></form>
                   <div class="horizontal-align">
                     <button class="btn-table"
-                      th:onclick="document.getElementById([[${cursoEnProgreso.codigo}]]).submit();">Completar</button>
-                    <button class="btn-table-eliminar">Eliminar</button>
+                      th:onclick="document.getElementById([['CCE' + ${cursoEnProgreso.codigo}]]).submit();">Completar</button>
+                    <button class="btn-table-eliminar"
+                      th:onclick="document.getElementById([['BCE' + ${cursoEnProgreso.codigo}]]).submit();">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -120,13 +126,16 @@
             <tbody>
               <tr class="active-row" th:each="cursoCompletado : ${cursosCompletados}">
                 <td th:text="${cursoCompletado.titulo}"></td>
-                <td><a th:href="${cursoCompletado.enlace}" th:text="${cursoCompletado.enlace}"></a></p>
+                <td><a th:href="${cursoCompletado.enlace}" th:text="Enlace"></a></p>
                 </td>
                 <td th:text="${cursoCompletado.descripcion}"></td>
                 <td th:text="${cursoCompletado.valoracion}"></td>
                 <td>
+                  <form th:id="${cursoCompletado.codigo}" hidden method="POST"
+                    th:action="@{/borrarCurso(idCurso=${cursoCompletado.idCurso})}"></form>
                   <div class="horizontal-align">
-                    <button class="btn-table-eliminar">Eliminar</button>
+                    <button class="btn-table-eliminar"
+                      th:onclick="document.getElementById([[${cursoCompletado.codigo}]]).submit();">Eliminar</button>
                   </div>
                 </td>
               </tr>
